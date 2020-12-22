@@ -1,36 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './components/home.component';
-import { ProductsComponent } from './components/products.component';
-import { BegineerComponent } from './components/begineer.component';
-import { ProductInfoComponent } from './components/productinfo.component';
-import { CartComponent } from './components/cart.component';
-import { BlogsComponent } from './components/blogs.component';
-import { HeaderComponent } from './components/header.component';
-import { FooterComponent } from './components/footer.component';
+import { BegineerComponent } from './components/begineerpage/begineerpage.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
+import { CartComponent } from './components/cart/cart.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductInfoComponent } from './components/productinfo/productinfo.component';
+
 
 
 @NgModule({
     imports: [CommonModule],
     exports: [
-        HomeComponent,
-        ProductsComponent,
-        BegineerComponent,
-        ProductInfoComponent,
-        CartComponent,
-        BlogsComponent,
-        HeaderComponent,
-        FooterComponent
+       BegineerComponent,
+       BlogsComponent,
+       CartComponent,
+       HeaderComponent,
+       FooterComponent,
+       HomeComponent,
+       ProductInfoComponent,
+       ProductsComponent
     ],
     declarations: [
+        BegineerComponent,
+        BlogsComponent,
+        CartComponent,
+        HeaderComponent,
+        FooterComponent,
         HomeComponent,
         ProductsComponent,
-        BegineerComponent,
-        ProductInfoComponent,
-        CartComponent,
-        BlogsComponent,
-        HeaderComponent,
-        FooterComponent
+        ProductInfoComponent
     ],
     providers: [],
 })

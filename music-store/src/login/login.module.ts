@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './components/login.component';
-import { SignupComponent } from './components/signup.component';
+import { LoginComponent } from './components/loginpage/loginpage.component';
+import { SignupComponent } from './components/signuppage/signuppage.component';
 
 @NgModule({
     imports: [CommonModule],
-    exports: [LoginComponent,SignupComponent],
+    exports: [LoginComponent, SignupComponent],
     declarations: 
     [
         LoginComponent,
