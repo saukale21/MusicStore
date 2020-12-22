@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { ProductsComponent } from './products.component';
-import { BegineerComponent } from './begineer.component';
-import { ProductInfoComponent } from './productinfo.component';
-import { CartComponent } from './cart.component';
-import { BlogsComponent } from './blogs.component';
+import { HomeComponent } from './components/home.component';
+import { ProductsComponent } from './components/products.component';
+import { BegineerComponent } from './components/begineer.component';
+import { ProductInfoComponent } from './components/productinfo.component';
+import { CartComponent } from './components/cart.component';
+import { BlogsComponent } from './components/blogs.component';
 
 
 @NgModule({
