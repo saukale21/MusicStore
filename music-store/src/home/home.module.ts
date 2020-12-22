@@ -6,6 +6,8 @@ import { BegineerComponent } from './components/begineer.component';
 import { ProductInfoComponent } from './components/productinfo.component';
 import { CartComponent } from './components/cart.component';
 import { BlogsComponent } from './components/blogs.component';
+import { HeaderComponent } from './components/header.component';
+import { FooterComponent } from './components/footer.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { BlogsComponent } from './components/blogs.component';
         BegineerComponent,
         ProductInfoComponent,
         CartComponent,
-        BlogsComponent
+        BlogsComponent,
+        HeaderComponent,
+        FooterComponent
     ],
     declarations: [
         HomeComponent,
@@ -24,7 +28,9 @@ import { BlogsComponent } from './components/blogs.component';
         BegineerComponent,
         ProductInfoComponent,
         CartComponent,
-        BlogsComponent
+        BlogsComponent,
+        HeaderComponent,
+        FooterComponent
     ],
     providers: [],
 })
