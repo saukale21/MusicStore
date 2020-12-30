@@ -43,3 +43,13 @@ nav{
     border-style: inset;
     background-image: url("src\assets\img\footer.jpg");
 }
+.column {
+-moz-column-count: 2; /* For FireFox */
+-webkit-column-count: 2; /* For Safari/Chrome */
+column-count: 2; /* For when the standard gets fully supported */
+}
+
+.dropdown-item h4{
+  font-weight: bold;
+  text-decoration: underline;
+}

@@ -1,1 +1,46 @@
-<h1>products works!</h1>
+<mat-form-field appearance="fill" class="float-right">
+  <mat-label>Sort By</mat-label>
+  <mat-select (selectionChange)="sortBy($event)">
+    <mat-option value="low to high">Price Low to High</mat-option>
+    <mat-option value="high to low">Price High to Low</mat-option>
+    <mat-option value="Recommended">Recommended</mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="container-fluid" style="display:flex; flex-direction: row; ">
+  <div class="col-lg-2 col-md-6 mb-4">
+    <h3>Select your price range: </h3>
+    <mat-slider thumbLabel [displayWith]="formatLabel" step="1000" min="1000" max="30000" (input)="priceSort($event)">
+    </mat-slider>
+    <!-- <button mat-mini-fab (click)="priceSort(mat-slider.value)">Go</button> -->
+    <div class="filter">
+      <h2>Filter by:</h2>
+      <mat-checkbox>Recommended Instruments</mat-checkbox><br>
+      <mat-checkbox>Beginners Instruments</mat-checkbox>
+      <h2>Select your brand:</h2>
+      <mat-checkbox>Yamaha</mat-checkbox><br>
+      <mat-checkbox>Bina</mat-checkbox><br>
+      <mat-checkbox>Gibson</mat-checkbox><br>
+      <mat-checkbox>Harman Professional</mat-checkbox><br>
+      <mat-checkbox>Ronald</mat-checkbox><br>
+
+    </div>
+  </div>
+  <section class="text-center mb-4">
+    <div class="row wow fadeIn">
+
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let pr of li">
+        <mat-card class="card">
+          <img [src]="pr.imgPath" alt="">
+          <div class="details">
+            <h4 class="title">{{pr.name}}</h4>
+            <span class="post">{{pr.price|currency:'INR'}}</span>
+            <ul class="icon">
+              <li><a href="#"><i class="fa fa-cart-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-arrow-circle-right"></i></a></li>
+            </ul>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+</div>
