@@ -8,11 +8,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductInfoComponent } from './components/productinfo/productinfo.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, MatCardModule],
     exports: [
        BegineerComponent,
        BlogsComponent,
@@ -21,7 +22,7 @@ import { ProductInfoComponent } from './components/productinfo/productinfo.compo
        FooterComponent,
        HomeComponent,
        ProductInfoComponent,
-       ProductsComponent
+       ProductsComponent,
     ],
     declarations: [
         BegineerComponent,

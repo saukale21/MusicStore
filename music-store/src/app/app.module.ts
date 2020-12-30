@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginModule } from '../login/login.module';
 import { HomeModule } from '../home/home.module';
+import { HomeComponent } from '../home/components/home/home.component';
+import { MatCardModule } from '@angular/material/card';
+
+
+
 
 @NgModule({
   declarations: [
@@ -14,9 +19,10 @@ import { HomeModule } from '../home/home.module';
     BrowserModule,
     AppRoutingModule,
     LoginModule,
-    HomeModule
+    HomeModule,
+    MatCardModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,HomeComponent]
 })
 export class AppModule { }

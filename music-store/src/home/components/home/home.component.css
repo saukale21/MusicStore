@@ -1,0 +1,190 @@
+/*  1. Beginner section
+    2. Recommended products section
+    3. review section
+*/
+
+/*--------------- BEGINNER---------------------*/
+.begineer-area
+{
+
+    padding: 100px 0px;
+    background-image: url('src\assets\img\begineer.jpg');
+    background-position: center;
+    text-align: center ;
+    font-family: monospace;
+}
+
+.text-uppercase
+{
+    font-weight: bold;
+
+}
+
+.primary-btn
+{
+    background-color: teal; 
+    border-radius:7% ;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.3s;
+    font-size: 20px;
+}
+
+.primary-btn:hover {opacity: 0.6}
+
+.begineer-area p
+{
+    font-size: 22px;
+}
+
+/*---------------RECOMMENDED-----------------------------*/
+#recommend
+{
+    text-transform: uppercase;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.card a img
+{
+    height: 300px;
+    width: 100%;
+}
+
+.card
+{
+    max-width: 350px;
+    height: 600px;
+    margin: 10px;
+    padding:10px;
+    border: grey solid 5px;
+}
+
+/*---------------------------REVIEW SECTION------------------------*/
+.slider-area
+{
+    background-image: url("src\assets\img\review.jpg");
+    padding: 50px 0;
+    position: relative;
+}
+
+.carousel-control.left,
+.carousel-control.right
+{
+    background: transparent;
+}
+
+.img-area
+{
+    width: 100px;
+    height:100px;
+    margin: auto;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.img-area img
+{
+    width: 100%;
+}
+
+.carousel-caption
+{
+    position: static;
+    padding-bottom: 15px;
+    padding-top:0 ;
+}
+
+.carousel-caption h3
+{
+    font-family: monospace;
+    font-weight: bold;
+    color: black;
+    font-size: 28px;
+}
+
+.carousel-caption h5
+{
+    font-family: monospace;
+    color: black;
+    font-size: 22px;
+}
+
+.carousel-caption p
+{
+    font-family: Cambria;
+    color: rgb(92, 87, 87);
+    font-size: 20px;
+}
+
+
+.example-card img{
+    height: 350px;
+    width: 100%
+  }
+          .example-card img:hover{
+            transition: 0.5s;
+              transform: scale(1.2);
+          }
+  
+          button{
+            border: none;
+              color: white;
+              background-color:teal;
+              text-align: center;
+              cursor: pointer;
+              border: none;
+              padding: 20px;
+              width: 200px;
+              transition: all 0.5s;
+              font-size: 20px;
+              border-radius: 35px;
+              margin: 5px;
+          }
+          button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+          button:hover{
+            background-color: grey;
+            color: black;
+            border: 3px solid black;
+            font-weight: bold;
+          }
+          button:hover span {
+    padding-right: 25px;
+  }
+  
+  button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+          .example-card {
+            max-width: 350px;
+            margin-top: 10px;
+          }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  
+  
+  

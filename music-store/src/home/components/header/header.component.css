@@ -1,0 +1,45 @@
+.navbar-brand
+{
+    font-weight: bold;
+    font-family:monospace;
+    font-size: 28px;
+}
+
+.navbar-item
+{
+    font-family: monospace;
+}
+.navbar-light .navbar-nav .nav-link
+{
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.navbar-light .navbar-nav .nav-item
+{
+    margin: 0 15px;
+
+}
+
+/*
+    To display quantity on top of cart
+*/
+.qty {
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 10px;
+    color:black;
+    background-color:white;
+  }
+
+nav{
+    border-style: inset;
+    background-image: url("src\assets\img\footer.jpg");
+}
