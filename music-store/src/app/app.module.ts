@@ -7,6 +7,8 @@ import { LoginModule } from '../login/login.module';
 import { HomeModule } from '../home/home.module';
 import { HomeComponent } from '../home/components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +22,12 @@ import { MatCardModule } from '@angular/material/card';
     AppRoutingModule,
     LoginModule,
     HomeModule,
-    MatCardModule
+    MatCardModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent,HomeComponent]
