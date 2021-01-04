@@ -1,3 +1,4 @@
+import { ProductInfoComponent } from './../home/components/productinfo/productinfo.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -20,6 +21,7 @@ import { CartComponent} from '../cart/cart.component';
     AppRoutingModule,
     LoginModule,
     HomeModule,
+    
     
 
   ],

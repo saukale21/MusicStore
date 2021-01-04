@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background
+{
+    width: 1500px;
+    height: 650px;
+    font-family: 'Poppins', sans-serif;
+    background-color: teal;
+    border-radius: 5px;
+    
+}
+
+.container
+{
+    
+    width: 920px;
+    height: 650px;
+    margin: 50px auto 0;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 50px;
+    position: relative;
+}
+
+.description
+{
+    margin-right: 50px;
+}
+
+.description h2
+{
+    margin: 20px 0 10px 0;
+    text-decoration: underline;
+    color: #282D3C;
+    
+}
+
+.description p
+{
+    font-size: 17px;
+    margin: 18px 0 10px 0;
+}
+ul li
+{
+    font-weight: 400;
+    opacity: 0.9;
+    color: #353535;
+    margin: 2px 0 10px 10px;
+    list-style: none;
+    background: url(../../../assets/img/checked.png) left center no-repeat;
+    background-size: 17px;
+    padding-left: 1.7rem;
+    
+}
+
+.description .price
+{
+    margin-top: 10px;
+    display:inline-block;
+    font-weight: 600;
+    font-size: 30px;
+    color: #353535;
+}
+
+.description button
+{
+    font-size: 18px;
+    padding: 15px 50px;
+    margin-top: 5px;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    color: #FFF;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.12);
+    border-radius: 15px;
+}
+
+small
+{
+    color: tomato;
+}
+
+.description .buy
+{
+    background-color: #ff9f00;
+    margin-left: 15px;
+}
+
+.description .cart
+{
+    background-color: #fb641b;
+}
+
+.cart:hover
+{
+    opacity: 0.8;
+}
+
+.buy:hover
+{
+    opacity: 0.8;
+}
+
+::ng-deep .ngxImageZoomContainer > img
+{
+    max-width: 400px !important;
+    height: 615px !important; 
+    border-radius: 5px !important;
+}
+

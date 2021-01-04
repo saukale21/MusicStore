@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ProductInfoComponent } from './productinfo.component';
+import { ProductInfoComponent} from './productinfo.component';
 
 describe('ProductinfoComponent', () => {
   let component: ProductInfoComponent;

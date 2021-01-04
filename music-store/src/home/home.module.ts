@@ -14,13 +14,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-
-
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 @NgModule({
   imports: [CommonModule, MatCardModule,
@@ -32,7 +30,8 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
     MatButtonModule,
     MatSliderModule,
     MatCheckboxModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    NgxImageZoomModule,
   ],
   exports: [
     BegineerComponent,
@@ -54,8 +53,8 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
     FooterComponent,
     HomeComponent,
     ProductsComponent,
-    ProductInfoComponent,
-    TutorialComponent
+    TutorialComponent,
+    ProductInfoComponent
   ],
   providers: [],
 })

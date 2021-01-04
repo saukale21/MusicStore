@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-productinfo',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./productinfo.component.css']
 })
 export class ProductInfoComponent implements OnInit {
-
+  Imagepath : string;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+     this.Imagepath= '../../assets/img/guitar3.jpg';
   }
+  
+  
 
 }
