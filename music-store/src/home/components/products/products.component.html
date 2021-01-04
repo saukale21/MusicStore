@@ -1,4 +1,4 @@
-<mat-form-field appearance="fill" class="float-right">
+<mat-form-field appearance="fill" class="float-right" *ngIf="rout=='/products'">
   <mat-label>Sort By</mat-label>
   <mat-select (selectionChange)="sortBy($event)">
     <mat-option value="low to high">Price Low to High</mat-option>
@@ -7,7 +7,7 @@
   </mat-select>
 </mat-form-field>
 <div class="container-fluid" style="display:flex; flex-direction: row; ">
-  <div class="col-lg-2 col-md-6 mb-4">
+  <div class="col-lg-2 col-md-6 mb-4" *ngIf="rout=='/products'">
     <h3>Select your price range: </h3>
     <mat-slider thumbLabel [displayWith]="formatLabel" step="1000" min="1000" max="30000" (input)="priceSort($event)">
     </mat-slider>

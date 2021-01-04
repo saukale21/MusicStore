@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
+import { Router } from '@angular/router';
 import { ProductDataService } from 'src/app/product-data.service';
 import { Products } from 'src/app/products';
 
@@ -11,8 +12,10 @@ import { Products } from 'src/app/products';
 export class ProductsComponent implements OnInit {
   li: Array<Products>
   matSelect: any;
-  constructor(data: ProductDataService) {
+  rout: String;
+  constructor(data: ProductDataService, private router: Router) {
     this.li = data.getli();
+    this.rout = router.url;
 
   }
   formatLabel(value: number) {
