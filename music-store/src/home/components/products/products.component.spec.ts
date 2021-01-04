@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ProductDataService } from 'src/app/product-data.service';
 
 import { ProductsComponent } from './products.component';
