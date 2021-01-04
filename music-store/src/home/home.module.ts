@@ -19,6 +19,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { TutorialComponent } from './components/tutorial/tutorial.component';
+
 @NgModule({
   imports: [CommonModule, MatCardModule,
     BrowserAnimationsModule,
@@ -28,7 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
     MatButtonModule,
     MatSliderModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MDBBootstrapModule.forRoot()
   ],
   exports: [
     BegineerComponent,
@@ -39,6 +43,7 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     ProductInfoComponent,
     ProductsComponent,
+    TutorialComponent
 
   ],
   declarations: [
@@ -49,7 +54,8 @@ import { MatSelectModule } from '@angular/material/select';
     FooterComponent,
     HomeComponent,
     ProductsComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    TutorialComponent
   ],
   providers: [],
 })

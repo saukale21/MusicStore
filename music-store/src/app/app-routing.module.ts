@@ -37,7 +37,8 @@ const routes: Routes = [
   {
     path: 'begineer',
     component: BegineerComponent
-  }
+  },
+
 ];
 
 @NgModule({
