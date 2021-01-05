@@ -10,7 +10,13 @@ mat-slider {
   margin-left: 0px;
 }
 
-/*----------------Product cards-----------------------*/
+/*---------------------------------------*/
+.outer-card{
+  height: 300px;
+  background-color: black;
+  color: white;
+  border-radius: 0 30px;
+}
 .card h3{
   color: whitesmoke;
 }
@@ -58,7 +64,7 @@ mat-slider {
 }
 .card:hover:before,
 .card:hover:after{
-    opacity: 0;
+    opacity: 0.2;
     left: 0;
 }
 .card:hover .details:before,
@@ -73,7 +79,7 @@ mat-slider {
 }
 .card:hover img{ opacity: 0.35; }
 .card .details{
-    color: black;
+    color: #fff;
     height: 100%;
     width: 100%;
     padding: 15px 0 0 15px;
@@ -104,7 +110,7 @@ mat-slider {
 }
 .card .icon li{ display: inline-block;  }
 .card .icon li a{
-    color: black;
+    color: #fff;
     background-color: lightslategray;
     font-size: 16px;
     text-align: center;
@@ -113,7 +119,7 @@ mat-slider {
     height: 40px;
     margin: 0 5px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 2px solid #fff;
     display: block;
     position: relative;
     transition: all 0.3s ease 0s;
@@ -132,7 +138,7 @@ mat-slider {
 @keyframes animate{
     0%{ opacity: 0.3; }
     40%{
-        opacity: 0.4;
+        opacity: 0.5;
         box-shadow: 0 0 0 2px rgba(255,255,255,0.1), 0 0 10px 10px #fff, 0 0 0 10px rgba(255,255,255,0.5);
     }
     100%{
@@ -148,7 +154,7 @@ mat-slider {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 1px;
-
+    text-transform: uppercase;
     text-shadow: 0 0 10px rgba(0,0,0,0.5);
     margin: 0 0 4px;
 }
