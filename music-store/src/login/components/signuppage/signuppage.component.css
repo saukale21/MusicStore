@@ -1,6 +1,26 @@
+.row{
+    padding: 20px 0px;
+    background-image: url('src\assets\img\begineer.jpg');
+    background-position: center;
+
+}
+label{
+
+    font-weight: 500;
+
+}
+
 .btn{
     background-color: teal;
+
 }
+.btn:hover {
+    cursor: pointer;
+}
+input:hover{
+    border: 3px solid grey;
+}
+
 .card-header{
     background-color: teal;
 
@@ -24,5 +44,8 @@
     font-size: 20px;
 }
 
-.primary-btn:hover {opacity: 0.6}
+.primary-btn:hover {
+    opacity: 0.6;
+
+}
 
