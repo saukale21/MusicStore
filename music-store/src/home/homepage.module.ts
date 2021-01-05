@@ -21,7 +21,6 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ProductsService } from './services/products.service';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from '../app/app-routing.module';
-
 @NgModule({
   imports: [
     AppRoutingModule,
@@ -36,7 +35,7 @@ import { AppRoutingModule } from '../app/app-routing.module';
     MatSliderModule,
     MatCheckboxModule,
     MDBBootstrapModule.forRoot(),
-    NgxImageZoomModule,
+    NgxImageZoomModule
   ],
   exports: [
     BegineerComponent,
