@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginModule } from '../login/login.module';
 import { HomeModule } from '../home/home.module';
 import { HomeComponent } from '../home/components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,7 +20,8 @@ import { HomeComponent } from '../home/components/home/home.component';
     AppRoutingModule,
     LoginModule,
     HomeModule,
-    
+   // HomeModule.forRoot(),
+    HttpClientModule
     
 
   ],

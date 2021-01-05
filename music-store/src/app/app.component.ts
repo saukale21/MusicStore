@@ -5,10 +5,8 @@ import { Component } from '@angular/core';
   template: `
   <app-header></app-header>
   <router-outlet></router-outlet>
+  <!-- <app-home></app-home> -->
   <app-footer></app-footer>
-  <!-- <app-header></app-header>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer> -->
   `
 })
 export class AppComponent {
