@@ -24,6 +24,10 @@ const routes: Routes = [
     component: ProductsComponent
   },
   {
+    path: 'products/:id',
+    component: ProductsComponent
+  },
+  {
     path: 'productinfo',
     component: ProductInfoComponent
   },

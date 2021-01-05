@@ -11,4 +11,8 @@ export class ProductsService {
         return this.http.get('http://localhost:3000/product');
     }
 
+    getProductByType(type):Observable<any> {
+        return this.http.get(`http://localhost:3000/product/?instrument=${type}`)
+    }
+
 }

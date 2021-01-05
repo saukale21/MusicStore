@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDataService } from 'src/app/product-data.service';
 import { Products } from 'src/app/products';
 import { ProductsService } from '../../services/products.service';
@@ -15,10 +15,10 @@ export class ProductsComponent implements OnInit {
   li: Array<Products>
   matSelect: any;
   rout: String;
-  constructor(data: ProductDataService, private router: Router,private productservice: ProductsService) {
+  productType: String
+  constructor(data: ProductDataService, private router: Router,private productservice: ProductsService,private activated: ActivatedRoute) {
     this.li = data.getli();
     this.rout = router.url;
-
   }
   formatLabel(value: number) {
     if (value >= 1000) {
@@ -36,6 +36,14 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activated.paramMap.subscribe(params=>{
+      //console.log(params);
+      this.productType = params.get('id'); 
+    })
+    this.productservice.getProductByType(this.productType).subscribe(res=>{
+      console.log(res);
+    })
+
     this.productservice.getProducts().subscribe(res=>{
       console.log(res);
     },
