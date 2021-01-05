@@ -36,12 +36,12 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.productservice.getProducts().subscribe(res=>{
-    //   console.log(res);
-    // },
-    // err=>{
-    //   console.log(err);
-    // })
+    this.productservice.getProducts().subscribe(res=>{
+      console.log(res);
+    },
+    err=>{
+      console.log(err);
+    })
   }
 
 }
