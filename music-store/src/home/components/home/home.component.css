@@ -124,67 +124,6 @@
 }
 
 
-.example-card img{
-    height: 350px;
-    width: 100%
-  }
-          .example-card img:hover{
-            transition: 0.5s;
-              transform: scale(1.2);
-          }
-  
-          button{
-            border: none;
-              color: white;
-              background-color:teal;
-              text-align: center;
-              cursor: pointer;
-              border: none;
-              padding: 20px;
-              width: 200px;
-              transition: all 0.5s;
-              font-size: 20px;
-              border-radius: 35px;
-              margin: 5px;
-          }
-          button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-          button:hover{
-            background-color: grey;
-            color: black;
-            border: 3px solid black;
-            font-weight: bold;
-          }
-          button:hover span {
-    padding-right: 25px;
-  }
-  
-  button:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
-          .example-card {
-            max-width: 350px;
-            margin-top: 10px;
-          }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  
   
   
   
