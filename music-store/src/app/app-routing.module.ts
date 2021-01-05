@@ -28,7 +28,7 @@ const routes: Routes = [
     component: ProductsComponent
   },
   {
-    path: 'productinfo',
+    path: 'productinfo/:id',
     component: ProductInfoComponent
   },
   {
@@ -48,11 +48,11 @@ const routes: Routes = [
     component: BegineerComponent
   },
   {
-    path:'blogs',
+    path: 'blogs',
     component: BlogsComponent
   },
   {
-    path:'**',
+    path: '**',
     component: HomeComponent
   }
 

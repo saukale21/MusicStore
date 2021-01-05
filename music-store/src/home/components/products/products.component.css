@@ -1,7 +1,9 @@
 .container-fluid{
   margin-top: 10px;
 }
-
+a[ng-click]{
+    cursor: pointer;
+}
 mat-form-field{
   font-weight: bold;
 }

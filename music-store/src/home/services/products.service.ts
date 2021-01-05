@@ -4,15 +4,14 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductsService {
-    
-    constructor(private http: HttpClient) { }
 
-    getProducts():Observable<any> {
-        return this.http.get('http://localhost:3000/product');
-    }
+  constructor(private http: HttpClient) { }
 
-    getProductByType(type):Observable<any> {
-        return this.http.get(`http://localhost:3000/product/?instrument=${type}`)
-    }
+  getProducts(): Observable<any> {
+    return this.http.get('http://localhost:3000/product');
 
+  }
+  getProductByType(type): Observable<any> {
+    return this.http.get(`http://localhost:3000/product/?instrument=${type}`)
+  }
 }

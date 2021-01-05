@@ -1,4 +1,4 @@
-<mat-form-field appearance="fill" class="float-right" *ngIf="rout=='/products'">
+<mat-form-field appearance="fill" class="float-right" *ngIf="isProductRoute()">
   <mat-label>Sort By</mat-label>
   <mat-select (selectionChange)="sortBy($event)">
     <mat-option value="low to high">Price Low to High</mat-option>
@@ -6,7 +6,7 @@
   </mat-select>
 </mat-form-field>
 <div class="container-fluid" style="display:flex; flex-direction: row; ">
-  <div class="col-lg-2 col-md-6 mb-4" *ngIf="rout=='/products'">
+  <div class="col-lg-2 col-md-6 mb-4" *ngIf="isProductRoute()">
     <h3>Select your price range: </h3>
     <mat-slider thumbLabel [displayWith]="formatLabel" step="1000" min="1000" max="30000" (input)="priceSort($event)">
     </mat-slider>
@@ -28,22 +28,19 @@
     <div class="row wow fadeIn">
 
       <div class="col-lg-3 col-md-6 mb-4" *ngFor="let pr of li">
-
+        <p>{{pr.price}}</p>
         <mat-card class="card">
-          <img [src]="pr.imgPath" alt="">
-          <h3>{{pr.name}}</h3>
+          <img [src]="pr.image_paths" alt="">
+          <h3>{{pr.product_name}}</h3>
           <div class="details">
-            <h5 class="title">{{pr.name}}</h5>
+            <h5 class="title">{{pr.product_name}}</h5>
             <strong><span class="post">{{pr.price|currency:'INR'}}</span></strong>
             <ul class="icon">
-              <li><a href="#"><i class="fa fa-cart-plus"></i></a></li>
-              <li><a href="#"><i class="fa fa-arrow-circle-right"></i></a></li>
+              <li><a (click)="addtoCart(pr)"><i class="fa fa-cart-plus"></i></a></li>
+              <li><a [routerLink]="['/productinfo',pr._id]"><i class="fa fa-arrow-circle-right"></i></a></li>
             </ul>
           </div>
         </mat-card>
-
-
-
       </div>
     </div>
   </section>
