@@ -11,5 +11,11 @@ export class BegineerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "/assets/audios/song.mp3";
+    audio.load();
+    audio.play();
+  }
+ 
 }

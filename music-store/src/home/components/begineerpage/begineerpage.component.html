@@ -1,56 +1,73 @@
-<div class="body" >
-    <div class="cards d-flex justify-content-center"  >
-      <div class="card-deck" >
-        <!-- Card -->
-        <mdb-card>
-          <div class="view overlay waves-light" mdbWavesEffect style="height: 250px;">
-            <mdb-card-img src="assets/img/beg_guitar.jpg" alt="Card image cap" ></mdb-card-img>   
-          </div>
-          <mdb-card-body>
-            <mdb-card-title>
-              <h4>Guitar</h4>
-            </mdb-card-title>
-            <!--Text-->
-            <!-- <mdb-card-text>  </mdb-card-text> -->
-            <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
-          </mdb-card-body>
-        </mdb-card>   
-        <mdb-card>
-          <div class="view rgba-white-slight waves-light" mdbWavesEffect  style="height: 250px;">      
-            <mdb-card-img src="assets/img/beg_tabla.jpg" alt="Card image cap" ></mdb-card-img>        
-          </div>   
-          <mdb-card-body>        
-            <mdb-card-title>
-              <h4>Tabla</h4>
-            </mdb-card-title>     
-          </mdb-card-body>
-        </mdb-card >
-      
-   
-        <mdb-card >
-          <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">     
-            <mdb-card-img src="assets/img/beg_flute.jpg" alt="Card image cap"></mdb-card-img>         
-          </div>
-          <mdb-card-body>       
-            <mdb-card-title>
-              <h4>Flute</h4>
-            </mdb-card-title>     
-          </mdb-card-body>
-        </mdb-card>
-        <mdb-card >
-            <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
-              <mdb-card-img src="assets/img/beg_keyboard.jpg" alt="Card image cap"></mdb-card-img>
-            </div>
-            <mdb-card-body>
-              <mdb-card-title>
-                <h4>Keyboard</h4>
-              </mdb-card-title>
-            </mdb-card-body>
-          </mdb-card>
-    
+<div class="body">
+
+    <div >
+        <video autoplay muted loop id="myVideo" >
+            <source src="/assets/videos/video1.mov" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+  
+
+    <div class="cards d-flex justify-content-center">
+        <div class="card-deck">
+            <!-- Card -->
+            <mdb-card (click)='playAudio()'>
+                <div class="view overlay waves-light" mdbWavesEffect style="height: 250px;">
+                    <mdb-card-img src="assets/img/beg_guitar.jpg" alt="Card image cap"></mdb-card-img>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4>Guitar</h4>
+                    </mdb-card-title>
+                    <!--Text-->
+                    <!-- <mdb-card-text>  </mdb-card-text> -->
+                    <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
+                </mdb-card-body>
+            </mdb-card>
+            <mdb-card>
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
+                    <mdb-card-img src="assets/img/beg_tabla.jpg" alt="Card image cap"></mdb-card-img>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4>Tabla</h4>
+                    </mdb-card-title>
+                </mdb-card-body>
+            </mdb-card>
+
+
+            <mdb-card>
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
+                    <mdb-card-img src="assets/img/beg_flute.jpg" alt="Card image cap"></mdb-card-img>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4>Flute</h4>
+                    </mdb-card-title>
+                </mdb-card-body>
+            </mdb-card>
+            <mdb-card>
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
+                    <mdb-card-img src="assets/img/beg_keyboard.jpg" alt="Card image cap"></mdb-card-img>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4>Keyboard</h4>
+                    </mdb-card-title>
+                </mdb-card-body>
+            </mdb-card>
+
+        </div>
+
+
     </div>
 </div>
-
-<div><app-tutorial></app-tutorial></div>
-<div><app-products></app-products></div>
-<div><app-blogs></app-blogs></div>
+<div>
+        <app-tutorial></app-tutorial>
+    </div>
+    <div >
+        <app-products></app-products>
+    </div>
+    <div>
+        <app-blogs></app-blogs>
+    </div>
