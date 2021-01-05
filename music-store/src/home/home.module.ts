@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BegineerComponent } from './components/begineerpage/begineerpage.component';
 import { BlogsComponent } from './components/blogs/blogs.component';
@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   imports: [
@@ -60,4 +61,11 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
   ],
   providers: [],
 })
-export class HomeModule { }
+export class HomeModule { 
+  // static forRoot(): ModuleWithProviders {
+  //   return {
+  //     ngModule: HomeModule,
+  //     providers: [ProductsService]
+  //   }
+  // }
+}
