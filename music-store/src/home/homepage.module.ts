@@ -5,7 +5,6 @@ import { BlogsComponent } from './components/blogs/blogs.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductInfoComponent } from './components/productinfo/productinfo.component';
 import { MatCardModule } from '@angular/material/card';
@@ -20,9 +19,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ProductsService } from './services/products.service';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from '../app/app-routing.module';
 
 @NgModule({
   imports: [
+    AppRoutingModule,
     CommonModule, 
     MatCardModule,
     BrowserAnimationsModule,
@@ -42,10 +44,10 @@ import { ProductsService } from './services/products.service';
     CartComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
     ProductInfoComponent,
     ProductsComponent,
-    TutorialComponent
+    TutorialComponent,
+    HomeComponent
 
   ],
   declarations: [
@@ -54,18 +56,18 @@ import { ProductsService } from './services/products.service';
     CartComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
     ProductsComponent,
     TutorialComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    HomeComponent
   ],
   providers: [],
 })
-export class HomeModule { 
-  // static forRoot(): ModuleWithProviders {
-  //   return {
-  //     ngModule: HomeModule,
-  //     providers: [ProductsService]
-  //   }
-  // }
+export class HomePageModule { 
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: HomePageModule,
+      providers: [ProductsService]
+    }
+  }
 }

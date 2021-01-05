@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
 
 /**
  *
@@ -43,7 +44,7 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup;
 
 
-  constructor(private builder: FormBuilder) { 
+  constructor(private builder: FormBuilder,private loginservice: LoginService) { 
     this.buildForm()
 
   }
@@ -62,7 +63,10 @@ export class SignupComponent implements OnInit {
   }
 
   register() {
-    console.log(this.registerForm.value)
+    console.log(this.registerForm.value);
+    this.loginservice.signUpUser().subscribe(res=>{
+      console.log(res);
+    })
   }
 
 
