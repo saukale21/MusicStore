@@ -8,11 +8,21 @@ export class LoginService {
 
     signUpUser():Observable<any> {
         let body = {
-            username: 'saukale21',
-            email: 'saurabhkale21@gmail.com',
-            password: 'ABCD@123'
+            username: 'kavita29',
+            email: 'kavitasharma@gmail.com',
+            password: 'XYZ@123'
         };
         return this.http.post('http://localhost:3000/user/signup',body);
+    }
+    loginUser(): Observable<any> {
+        let body1 = {
+            email: 'kavitasharma@gmail.com',
+            password: 'XYZ@123',
+
+        };
+        return this.http.post('http://localhost:3000/user/signin',body1);
+
+
     };
 
 }

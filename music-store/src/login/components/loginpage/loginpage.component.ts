@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
+
 
 function symbolValidator(control) { 
   if(control.hasError('required')) return null;
@@ -23,7 +25,7 @@ function symbolValidator(control) {
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private loginservice: LoginService) { }
 
   ngOnInit(): void {
     this.loginForm  =  this.formBuilder.group({
@@ -33,9 +35,17 @@ export class LoginComponent implements OnInit {
 }
 
   login() {
-    console.log(this.loginForm.value)
+    console.log(this.loginForm.value);
+    //var email = this.loginForm.controls.email.value;
+    //var password = this.loginForm.controls.password.value;
+    
+    this.loginservice.loginUser().subscribe(res=>{
+      console.log(res);
+    })
+  }
+
 
   }
 
 
-}
+
