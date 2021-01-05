@@ -7,6 +7,7 @@ import { CartComponent } from '../home/components/cart/cart.component';
 import { LoginComponent } from '../login/components/loginpage/loginpage.component';
 import { SignupComponent } from '../login/components/signuppage/signuppage.component';
 import { BegineerComponent } from '../home/components/begineerpage/begineerpage.component';
+import { BlogsComponent } from '../home/components/blogs/blogs.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,14 @@ const routes: Routes = [
     path: 'begineer',
     component: BegineerComponent
   },
+  {
+    path:'blogs',
+    component: BlogsComponent
+  },
+  {
+    path:'**',
+    component: HomeComponent
+  }
 
 ];
 

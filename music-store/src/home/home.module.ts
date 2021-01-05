@@ -21,7 +21,9 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 
 @NgModule({
-  imports: [CommonModule, MatCardModule,
+  imports: [
+    CommonModule, 
+    MatCardModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,

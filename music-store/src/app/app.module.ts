@@ -7,14 +7,12 @@ import { AppComponent } from './app.component';
 import { LoginModule } from '../login/login.module';
 import { HomeModule } from '../home/home.module';
 import { HomeComponent } from '../home/components/home/home.component';
-import { CartComponent} from '../cart/cart.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CartComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
