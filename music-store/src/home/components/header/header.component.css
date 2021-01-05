@@ -53,3 +53,5 @@ column-count: 2; /* For when the standard gets fully supported */
   font-weight: bold;
   text-decoration: underline;
 }
+
+.material-icons.md-36 { font-size: 36px; }
