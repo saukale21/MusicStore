@@ -52,7 +52,7 @@ describe('SignuppageComponent', () => {
     const fixture = TestBed.createComponent(SignupComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h2').textContent).toContain('Register Here');
+    expect(compiled.querySelector('h5').textContent).toContain('Register Here');
   });
   it('submitting a form',() =>{
     component.register();
