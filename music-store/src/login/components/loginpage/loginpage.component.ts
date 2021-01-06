@@ -33,6 +33,7 @@ function symbolValidator(control) {
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   response;
+  loginFlag: boolean = false;
   socialusers = new Socialusers();
 
 
@@ -49,8 +50,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-    
-    this.loginservice.loginUser(this.loginForm.value).subscribe(res=>{
+    if(this.loginFlag != true) {
+      this.loginservice.loginUser(this.loginForm.value).subscribe(res=>{
         console.log(res);
         localStorage.setItem('token', res.token)
         this.loginservice.setLoginFlag();
@@ -63,9 +64,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate([url]);
 
       })
+    }
+    
   }
   public socialSignIn(socialProvider: string) {
     let socialPlatformProvider;
+    this.loginFlag = true;
     if ( socialProvider == 'facebook') {
         socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
     } else if ( socialProvider == 'google') {

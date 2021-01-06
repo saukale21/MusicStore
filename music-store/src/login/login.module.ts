@@ -38,12 +38,12 @@ import { SocialloginService } from './services/sociallogin.service';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '658613871689-9mcn539e9f2mvklp84u8l1ba868vblnp.apps.googleusercontent.com'
+              '95164095729-gkv9ptr3gmkrnqldqkm7kr6ivp4hk33s.apps.googleusercontent.com'
             )
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('3311062049016953')
+            provider: new FacebookLoginProvider('420677409117021')
           }
         ]
       } as SocialAuthServiceConfig,
