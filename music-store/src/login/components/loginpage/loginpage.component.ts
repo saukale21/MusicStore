@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router'
+
 
 
 function symbolValidator(control) { 
@@ -25,7 +27,7 @@ function symbolValidator(control) {
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private loginservice: LoginService) { }
+  constructor(private formBuilder: FormBuilder,private loginservice: LoginService,private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm  =  this.formBuilder.group({
@@ -41,6 +43,9 @@ export class LoginComponent implements OnInit {
     
     this.loginservice.loginUser(this.loginForm.value).subscribe(res=>{
         console.log(res);
+        localStorage.setItem('token', res.token)
+        this.router.navigate(['/cart'])
+
       })
   }
 

@@ -10,18 +10,38 @@ import { ProductsService } from 'src/home/services/products.service';
 })
 export class ProductInfoComponent implements OnInit {
   Imagepath: string;
+  productInfo:Array<any> = [];
   id: String;
+  data:any;
+  res : any;
   constructor(private route: ActivatedRoute, private productservice: ProductsService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     this.Imagepath = '../../assets/img/guitar3.jpg';
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.productservice.getProductById(this.id).subscribe(res => {
-      console.log(res);
-    });
+    this.id = this.route.snapshot.params['id'];
+    this.getProductById();
+    // console.log(this.id);
+    // this.productservice.getProductById(this.id).subscribe(res =>
+    // {
+    //   this.res=res;
+    //   console.log(this.res);
+
+    // });
   }
 
+  getProductById()
+  {
+      this.productservice.getProductById(this.id).subscribe(res =>{
+        this.res=res;
+        this.productInfo = res;
+        console.log(this.productInfo[0].product);
+        console.log(this.res);
+      });
+  }
 
+  
+
+  
 
 }

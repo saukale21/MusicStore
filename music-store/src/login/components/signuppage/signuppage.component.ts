@@ -42,6 +42,7 @@ function symbolValidator(control) {
 export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
+  senderForm = {} ;
 
 
   constructor(private builder: FormBuilder,private loginservice: LoginService) { 
@@ -56,15 +57,18 @@ export class SignupComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, symbolValidator, Validators.minLength(4)]],
-      confirmPassword: ''
+     confirmPassword: ''
     }, {
       validators: passwordsMatchValidator
     })
   }
 
   register() {
-    console.log(this.registerForm.value);
-    this.loginservice.signUpUser(this.registerForm.value).subscribe(res=>{
+    //console.log(this.registerForm.value);
+    this.senderForm = {username :this.registerForm.controls.name.value,email:this.registerForm.controls.email.value, password : this.registerForm.controls.password.value };
+    //console.log("SenderForm",this.senderForm);
+
+    this.loginservice.signUpUser(this.senderForm).subscribe(res=>{
       console.log(res);
     })
   }
