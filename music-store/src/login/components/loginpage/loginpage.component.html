@@ -47,15 +47,15 @@
               Or login with
             </span><br/><br/>
           </div>
-          <a href="#" class="btn-face m-b-10" style="float: left;">
+          <button (click)="socialSignIn('facebook')" href="#" class="btn-face m-b-10" style="float: left;">
             <i class="fab fa-facebook-f"></i>
             Facebook
-          </a>
+          </button>
   
-          <a href="#" class="btn-google m-b-10" style="float: left;">
+          <button (click)="socialSignIn('google')" href="#" class="btn-google m-b-10" style="float: left;">
             <img src="assets/img/icons/icon-google.png" alt="GOOGLE">
             Google
-          </a>
+          </button>
         <br/><br/>
 
           <div class="text-center w-full p-t-115">

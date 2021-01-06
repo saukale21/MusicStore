@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
+import { SocialloginService } from '../../services/sociallogin.service';
+
+
+import { SocialAuthService } from 'angularx-social-login';
 import { Router } from '@angular/router'
+import { Socialusers } from 'src/login/socialusers';
 
 
 
@@ -26,8 +32,12 @@ function symbolValidator(control) {
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  response;
+  socialusers = new Socialusers();
 
-  constructor(private formBuilder: FormBuilder,private loginservice: LoginService,private router: Router) { }
+
+  constructor(private formBuilder: FormBuilder,private loginservice: LoginService,public OAuth : SocialAuthService,
+    private SocialLoginService: SocialloginService,private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm  =  this.formBuilder.group({
@@ -35,6 +45,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, symbolValidator, Validators.minLength(4)]],
   });
 }
+
 
   login() {
     console.log(this.loginForm.value);
@@ -48,9 +59,23 @@ export class LoginComponent implements OnInit {
 
       })
   }
+  public socialSignIn(socialProvider: string) {
+    let socialPlatformProvider;
+    if ( socialProvider == 'facebook') {
+        socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    } else if ( socialProvider == 'google') {
+        socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    this.OAuth.signIn(socialPlatformProvider).then(user => {
+        console.log(socialProvider, user);
+        if(user.provider == "GOOGLE" || user.provider =="FACEBOOK")
+        {
+          this.router.navigate(['/cart']);  
+        }
+    })
 
-
-  }
+}
+}
 
 
 
