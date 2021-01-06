@@ -14,11 +14,12 @@
     /* background-color: teal;  */
     border-radius: 5px;
     background: url(../../../assets/img/review.jpg);
+    padding-top: 20px;
 }
 
 .productdetails
 {
-    
+    width: 100%;
     width: 920px;
     height: 650px;
     margin: 0 auto 0;

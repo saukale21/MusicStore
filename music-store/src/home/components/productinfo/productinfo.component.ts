@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ProductsService } from 'src/home/services/products.service';
 import { environment } from '../../../environments/environment.prod';
 import { Product } from '../products/product';
+import { LoginService } from '../../../login/services/login.service';
 
 
 @Component({
@@ -11,8 +12,7 @@ import { Product } from '../products/product';
   styleUrls: ['./productinfo.component.css']
 })
 export class ProductInfoComponent implements OnInit {
-  //Imagepath: string;
-  //productInfo:Array<any> = [];
+
   id: String;
   data:any;
   res = {
@@ -22,8 +22,75 @@ export class ProductInfoComponent implements OnInit {
     sub_category: "",
     price: ""
   };
+
+  category = [];
+  name = [];
+  image = [];
+  price = [];
   imageurl = environment.URL;
-  constructor(private route: ActivatedRoute, private productservice: ProductsService) { }
+
+  constructor(private router: Router,private route: ActivatedRoute, private productservice: ProductsService,private loginservice:LoginService) { }
+
+
+  // Add to cart
+  addtoCart(pr: Product) {
+
+    if (this.loginservice.login == false) {
+      this.loginservice.setURL(this.router.url);
+      this.router.navigate(['/login']);
+    }
+    else {
+      alert(pr.product_name + ' added to cart');
+
+      //category
+      if (localStorage.hasOwnProperty('ProductCategory')) {
+        this.category = JSON.parse(localStorage.getItem("ProductCategory"));
+        this.category.push(pr.sub_category);
+        localStorage.setItem("ProductCategory", JSON.stringify(this.category));
+      }
+      else {
+        this.category.push(pr.sub_category);
+        localStorage.setItem("ProductCategory", JSON.stringify(this.category));
+      }
+
+      //Name
+      if (localStorage.hasOwnProperty('ProductName')) {
+        this.name = JSON.parse(localStorage.getItem("ProductName"));
+        this.name.push(pr.product_name);
+        localStorage.setItem("ProductName", JSON.stringify(this.name));
+      }
+      else {
+        this.name.push(pr.product_name);
+        localStorage.setItem("ProductName", JSON.stringify(this.name));
+      }
+
+      //image path
+      if (localStorage.hasOwnProperty('ProductImage')) {
+        this.image = JSON.parse(localStorage.getItem("ProductImage"));
+        this.image.push(pr.image_paths);
+        localStorage.setItem("ProductImage", JSON.stringify(this.image));
+      }
+      else {
+        this.image.push(pr.image_paths);
+        localStorage.setItem("ProductImage", JSON.stringify(this.image));
+      }
+
+      //price
+      if (localStorage.hasOwnProperty('ProductPrice')) {
+        this.price = JSON.parse(localStorage.getItem("ProductPrice"));
+        this.price.push(pr.price);
+        localStorage.setItem("ProductPrice", JSON.stringify(this.price));
+      }
+      else {
+        this.price.push(pr.price);
+        localStorage.setItem("ProductPrice", JSON.stringify(this.price));
+      }
+
+    }
+    
+}
+
+
 
   ngOnInit(): void
   {
@@ -34,23 +101,9 @@ export class ProductInfoComponent implements OnInit {
     this.productservice.getProductById(this.id).subscribe(res =>
     {
         this.res=res.product;
-        //this.productInfo = res;
-        //console.log(this.productInfo[0].product);
-        console.log(this.res);
-
     });
+
   }
-
-  // getProductById()
-  // {
-  //     this.productservice.getProductById(this.id).subscribe(res =>{
-  //       this.res=res;
-  //       this.productInfo = res;
-  //       console.log(this.productInfo[0].product);
-  //       console.log(this.res);
-  //     });
-  // }
-
   
 
   

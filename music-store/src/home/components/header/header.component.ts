@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  cartLength=localStorage.getItem("ProductCategory").split(",").length;
   constructor() { }
 
   ngOnInit(): void {
