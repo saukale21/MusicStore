@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value);
-    this.loginservice.signUpUser().subscribe(res=>{
+    this.loginservice.signUpUser(this.registerForm.value).subscribe(res=>{
       console.log(res);
     })
   }

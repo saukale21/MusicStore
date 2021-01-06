@@ -6,16 +6,11 @@ export class LoginService {
     
     constructor(private http: HttpClient) { }
 
-    signUpUser():Observable<any> {
-        let body = {
-            username: 'kavita29',
-            email: 'kavitasharma@gmail.com',
-            password: 'XYZ@123'
-        };
-        return this.http.post<any>('http://localhost:3000/user/signup',body);
+    signUpUser(data):Observable<any> {
+        return this.http.post<any>('https://musicstoresss.herokuapp.com/user/signup',data);
     }
     loginUser(data): Observable<any> {
-        return this.http.post<any>('http://localhost:3000/user/signin',data);
+        return this.http.post<any>('https://musicstoresss.herokuapp.com/user/signin',data);
 
     };
 
