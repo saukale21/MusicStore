@@ -3,7 +3,7 @@ import { Product } from '../components/products/product';
 
 @Injectable()
 export class RecommendedService {
-  recommendedProducts: Product;
+  recommendedProducts: Array<Product>;
   constructor() { }
 
   setProducts(data) {
