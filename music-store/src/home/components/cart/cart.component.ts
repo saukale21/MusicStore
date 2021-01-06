@@ -31,18 +31,34 @@ export class CartComponent implements OnInit {
     this.priceList=localStorage.getItem('ProductPrice').split(",");
     this.cartLength=this.categoryList.length;
   }
+  
 
     for(let i=0;i<this.cartLength;i++)
     {
-      if(i==0)
+      if(i==0 && i==this.cartLength-1)
       {
 
         this.category=this.categoryList[i].split("[")[1];
         this.product_name=this.nameList[i].split("[")[1];
         this.image_path=this.imageList[i].split("[")[1];
         this.price=this.priceList[i].split("[")[1];
+
+        this.category=this.category.split("]")[0];
+        this.product_name=this.product_name.split("]")[0];
+        this.image_path=this.image_path.split("]")[0];
+        this.price=this.price.split("]")[0];
+           
   
       }
+      else if(i==0 && i!=this.cartLength-1)
+      {
+
+        this.category=this.categoryList[i].split("[")[1];
+        this.product_name=this.nameList[i].split("[")[1];
+        this.image_path=this.imageList[i].split("[")[1];
+        this.price=this.priceList[i].split("[")[1];
+      }
+
 
       else if(i==this.cartLength-1)
       {
