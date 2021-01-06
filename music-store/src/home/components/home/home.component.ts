@@ -14,12 +14,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.productservice.getRecommendedProducts().subscribe(res => {
-        console.log(res);
+       // console.log(res);
         
         for(var i=0;i<6;i++) {
           this.products.push(res.post[i]);
         }
-        this.recommendedservice.setProducts(this.products);
+        //this.recommendedservice.setProducts(this.products);
       },
         err => {
           console.log(err);

@@ -9,7 +9,6 @@ export class ProductsService {
 
   getProducts(): Observable<any> {
     return this.http.get('https://musicstoresss.herokuapp.com/product');
-
   }
   getProductByType(type): Observable<any> {
     return this.http.get(`https://musicstoresss.herokuapp.com/product/?instrument=${type}`)
