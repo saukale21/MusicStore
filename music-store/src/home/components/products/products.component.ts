@@ -19,7 +19,10 @@ export class ProductsComponent implements OnInit {
   indianProducts: Array<any> = new Array();
   matSelect: any;
   productType: String;
-  cart: Array<Product> = new Array();
+  category= [];
+  name=[];
+  image=[];
+  price=[];
   li: Product;
   imageurl = environment.URL;
   constructor(private router: Router, private productservice: ProductsService,
@@ -29,7 +32,7 @@ export class ProductsComponent implements OnInit {
 
   addtoCart(pr: Product) {
     alert(pr.product_name + ' added to cart');
-    if (localStorage.hasOwnProperty('ProductsCart')) {
+    /*if (localStorage.hasOwnProperty('ProductsCart')) {
       this.cart = JSON.parse(localStorage.getItem("ProductsCart"));
       this.cart.push(pr);
       localStorage.setItem("ProductsCart", JSON.stringify(this.cart));
@@ -37,7 +40,53 @@ export class ProductsComponent implements OnInit {
     else {
       this.cart.push(pr);
       localStorage.setItem("ProductsCart", JSON.stringify(this.cart));
+    }*/
+
+
+    //category
+    if (localStorage.hasOwnProperty('ProductCategory')) {
+      this.category = JSON.parse(localStorage.getItem("ProductCategory"));
+      this.category.push(pr.sub_category);
+      localStorage.setItem("ProductCategory", JSON.stringify(this.category));
     }
+    else {
+      this.category.push(pr.sub_category);
+      localStorage.setItem("ProductCategory", JSON.stringify(this.category));
+    }
+
+    //Nam
+    if (localStorage.hasOwnProperty('ProductName')) {
+      this.name = JSON.parse(localStorage.getItem("ProductName"));
+      this.name.push(pr.product_name);
+      localStorage.setItem("ProductName", JSON.stringify(this.name));
+    }
+    else {
+      this.name.push(pr.product_name);
+      localStorage.setItem("ProductName", JSON.stringify(this.name));
+    }
+
+    //image path
+    if (localStorage.hasOwnProperty('ProductImage')) {
+      this.image = JSON.parse(localStorage.getItem("ProductImage"));
+      this.image.push(pr.image_paths);
+      localStorage.setItem("ProductImage", JSON.stringify(this.image));
+    }
+    else {
+      this.image.push(pr.image_paths);
+      localStorage.setItem("ProductImage", JSON.stringify(this.image));
+    }
+
+    //price
+    if (localStorage.hasOwnProperty('ProductPrice')) {
+      this.price = JSON.parse(localStorage.getItem("ProductPrice"));
+      this.price.push(pr.price);
+      localStorage.setItem("ProductPrice", JSON.stringify(this.price));
+    }
+    else {
+      this.price.push(pr.price);
+      localStorage.setItem("ProductPrice", JSON.stringify(this.price));
+    }
+    
   }
   isProductRoute() {
     if (this.router.url.includes("/products")) {
