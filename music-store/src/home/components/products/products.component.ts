@@ -5,6 +5,7 @@ import { ProductsService } from '../../services/products.service';
 import { Product } from './product';
 import { RecommendedService } from '../../services/recommended.service';
 import { environment } from '../../../environments/environment.prod';
+import { LoginService } from '../../../login/services/login.service';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -26,12 +27,18 @@ export class ProductsComponent implements OnInit {
   li: Product;
   imageurl = environment.URL;
   constructor(private router: Router, private productservice: ProductsService,
-    private activated: ActivatedRoute, private recommendedservice: RecommendedService) {
-    // console.log(this.products);
+    private activated: ActivatedRoute, private recommendedservice: RecommendedService, private loginservice: LoginService) {
+
   }
 
   addtoCart(pr: Product) {
-    alert(pr.product_name + ' added to cart');
+    if(this.loginservice.login == false) {
+      this.loginservice.setURL(this.router.url);
+      this.router.navigate(['/login']);
+    }
+    else {
+      alert(pr.product_name + ' added to cart');
+
     /*if (localStorage.hasOwnProperty('ProductsCart')) {
       this.cart = JSON.parse(localStorage.getItem("ProductsCart"));
       this.cart.push(pr);
@@ -86,6 +93,8 @@ export class ProductsComponent implements OnInit {
       this.price.push(pr.price);
       localStorage.setItem("ProductPrice", JSON.stringify(this.price));
     }
+    }
+    
     
   }
   isProductRoute() {

@@ -21,13 +21,15 @@ export class CartComponent implements OnInit {
   category:string;
 
   constructor() { 
-
-    this.categoryList=localStorage.getItem('ProductCategory').split(",");
-    this.nameList=localStorage.getItem('ProductName').split(",");
-    this.imageList=localStorage.getItem('ProductImage').split(",");
-    this.priceList=localStorage.getItem('ProductPrice').split(",");
-    this.cartLength=this.categoryList.length;
-
+    if(localStorage.getItem('ProductCategory')!=null && localStorage.getItem('ProductName')!=null
+    && localStorage.getItem('ProductImage')!=null  && localStorage.getItem('ProductPrice')!=null ) {
+      this.categoryList=localStorage.getItem('ProductCategory').split(",");
+      this.nameList=localStorage.getItem('ProductName').split(",");
+      this.imageList=localStorage.getItem('ProductImage').split(",");
+      this.priceList=localStorage.getItem('ProductPrice').split(",");
+      this.cartLength=this.categoryList.length;
+    }
+    
     for(let i=0;i<this.cartLength;i++)
     {
       if(i==0)

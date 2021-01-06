@@ -38,13 +38,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginForm.value);
-    //var email = this.loginForm.controls.email.value;
-    //var password = this.loginForm.controls.password.value;
     
     this.loginservice.loginUser(this.loginForm.value).subscribe(res=>{
         console.log(res);
         localStorage.setItem('token', res.token)
-        this.router.navigate(['/cart'])
+        this.loginservice.setLoginFlag();
+        let url = this.loginservice.getURL();
+        this.router.navigate([url]);
 
       })
   }
