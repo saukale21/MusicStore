@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from './product';
 import { RecommendedService } from '../../services/recommended.service';
-
+import { environment } from '../../../environments/environment.prod';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -12,16 +12,19 @@ import { RecommendedService } from '../../services/recommended.service';
   providers: [ProductsService]
 })
 export class ProductsComponent implements OnInit {
-  @Input() products : Array<any>;
-  @Input() begineerproducts : Array<any>;
-  @Input() selection : String;
+  @Input() products: Product;
+  //@Input() recommended:Product;
+  @Input() begineerproducts: Array<any>;
+  @Input() selection: String;
   indianProducts: Array<any> = new Array();
   matSelect: any;
   productType: String;
   cart: Array<Product> = new Array();
   li: Product;
-  constructor(private router: Router, private productservice: ProductsService, 
-    private activated: ActivatedRoute, private recommendedservice : RecommendedService) {
+  imageurl = environment.URL;
+  constructor(private router: Router, private productservice: ProductsService,
+    private activated: ActivatedRoute, private recommendedservice: RecommendedService) {
+    // console.log(this.products);
   }
 
   addtoCart(pr: Product) {
@@ -58,20 +61,22 @@ export class ProductsComponent implements OnInit {
     //console.log('hey');
     console.log(event);
   }
-  ngAfterViewChecked():void {
+  ngAfterViewChecked(): void {
     console.log(this.products);
     //this.li = this.products;
+    this.li = this.recommendedservice.getProducts();
+    console.log('li', this.li);
   }
   ngOnInit(): void {
     this.activated.paramMap.subscribe(params => {
       this.productType = params.get('id');
     })
-    if(this.productType == "indian"){
+    if (this.productType == "indian") {
       //console.log("Indian");
-      this.productservice.getProducts().subscribe(res=>{
-        for(var i of res.post){
-          if(i.sub_category == "Pungi" || i.sub_category == "Sarod" || i.sub_category == "Mayuri"
-          || i.sub_category == "Bigul" || i.sub_category == "Ekkalam" || i.sub_category == "Pakhawaj"){
+      this.productservice.getProducts().subscribe(res => {
+        for (var i of res.post) {
+          if (i.sub_category == "Pungi" || i.sub_category == "Sarod" || i.sub_category == "Mayuri"
+            || i.sub_category == "Bigul" || i.sub_category == "Ekkalam" || i.sub_category == "Pakhawaj") {
             this.indianProducts.push(i);
           }
         }
@@ -80,13 +85,14 @@ export class ProductsComponent implements OnInit {
     }
     else {
       this.productservice.getProductByType(this.productType).subscribe(res => {
+
         this.li = res.post;
         // for (let pr of res.post) {
         //   console.log(pr.price);
         // }
       })
     }
-    
+
     // if(this.router.url == 'http://localhost:4200') {
     //   let prods = this.recommendedservice.getProducts();
     //   console.log(prods);
