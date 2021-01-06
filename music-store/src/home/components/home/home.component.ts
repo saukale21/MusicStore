@@ -10,8 +10,8 @@ import { Product } from '../products/product';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  products: Array<Product> = [];
-  recommended: Product;
+  products: Array<Product>;
+  recommended: Array<Product>;
 
   constructor(private productservice: ProductsService, private recommendedservice: RecommendedService) { }
 
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
       console.log(res);
       this.recommended = res;
       console.log('home', this.recommended);
-      for (var i = 0; i < 8; i++) {
+      for (var i = 4; i < 12; i++) {
         this.products.push(res.post[i]);
       }
       console.log('products', this.products);

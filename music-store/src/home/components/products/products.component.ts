@@ -13,18 +13,18 @@ import { LoginService } from '../../../login/services/login.service';
   providers: [ProductsService]
 })
 export class ProductsComponent implements OnInit {
-  @Input() products: Product;
+  @Input() products: Array<Product>;
   //@Input() recommended:Product;
-  @Input() begineerproducts: Array<any>;
+  li: Array<Product>;
+  @Input() begineerproducts: Array<Product>;
   @Input() selection: String;
-  indianProducts: Array<any> = new Array();
+  indianProducts: Array<Product> = new Array();
   matSelect: any;
   productType: String;
-  category= [];
-  name=[];
-  image=[];
-  price=[];
-  li: Product;
+  category = [];
+  name = [];
+  image = [];
+  price = [];
   imageurl = environment.URL;
   constructor(private router: Router, private productservice: ProductsService,
     private activated: ActivatedRoute, private recommendedservice: RecommendedService, private loginservice: LoginService) {
@@ -32,70 +32,70 @@ export class ProductsComponent implements OnInit {
   }
 
   addtoCart(pr: Product) {
-    if(this.loginservice.login == false) {
+    if (this.loginservice.login == false) {
       this.loginservice.setURL(this.router.url);
       this.router.navigate(['/login']);
     }
     else {
       alert(pr.product_name + ' added to cart');
 
-    /*if (localStorage.hasOwnProperty('ProductsCart')) {
-      this.cart = JSON.parse(localStorage.getItem("ProductsCart"));
-      this.cart.push(pr);
-      localStorage.setItem("ProductsCart", JSON.stringify(this.cart));
-    }
-    else {
-      this.cart.push(pr);
-      localStorage.setItem("ProductsCart", JSON.stringify(this.cart));
-    }*/
+      /*if (localStorage.hasOwnProperty('ProductsCart')) {
+        this.cart = JSON.parse(localStorage.getItem("ProductsCart"));
+        this.cart.push(pr);
+        localStorage.setItem("ProductsCart", JSON.stringify(this.cart));
+      }
+      else {
+        this.cart.push(pr);
+        localStorage.setItem("ProductsCart", JSON.stringify(this.cart));
+      }*/
 
 
-    //category
-    if (localStorage.hasOwnProperty('ProductCategory')) {
-      this.category = JSON.parse(localStorage.getItem("ProductCategory"));
-      this.category.push(pr.sub_category);
-      localStorage.setItem("ProductCategory", JSON.stringify(this.category));
-    }
-    else {
-      this.category.push(pr.sub_category);
-      localStorage.setItem("ProductCategory", JSON.stringify(this.category));
+      //category
+      if (localStorage.hasOwnProperty('ProductCategory')) {
+        this.category = JSON.parse(localStorage.getItem("ProductCategory"));
+        this.category.push(pr.sub_category);
+        localStorage.setItem("ProductCategory", JSON.stringify(this.category));
+      }
+      else {
+        this.category.push(pr.sub_category);
+        localStorage.setItem("ProductCategory", JSON.stringify(this.category));
+      }
+
+      //Nam
+      if (localStorage.hasOwnProperty('ProductName')) {
+        this.name = JSON.parse(localStorage.getItem("ProductName"));
+        this.name.push(pr.product_name);
+        localStorage.setItem("ProductName", JSON.stringify(this.name));
+      }
+      else {
+        this.name.push(pr.product_name);
+        localStorage.setItem("ProductName", JSON.stringify(this.name));
+      }
+
+      //image path
+      if (localStorage.hasOwnProperty('ProductImage')) {
+        this.image = JSON.parse(localStorage.getItem("ProductImage"));
+        this.image.push(pr.image_paths);
+        localStorage.setItem("ProductImage", JSON.stringify(this.image));
+      }
+      else {
+        this.image.push(pr.image_paths);
+        localStorage.setItem("ProductImage", JSON.stringify(this.image));
+      }
+
+      //price
+      if (localStorage.hasOwnProperty('ProductPrice')) {
+        this.price = JSON.parse(localStorage.getItem("ProductPrice"));
+        this.price.push(pr.price);
+        localStorage.setItem("ProductPrice", JSON.stringify(this.price));
+      }
+      else {
+        this.price.push(pr.price);
+        localStorage.setItem("ProductPrice", JSON.stringify(this.price));
+      }
     }
 
-    //Nam
-    if (localStorage.hasOwnProperty('ProductName')) {
-      this.name = JSON.parse(localStorage.getItem("ProductName"));
-      this.name.push(pr.product_name);
-      localStorage.setItem("ProductName", JSON.stringify(this.name));
-    }
-    else {
-      this.name.push(pr.product_name);
-      localStorage.setItem("ProductName", JSON.stringify(this.name));
-    }
 
-    //image path
-    if (localStorage.hasOwnProperty('ProductImage')) {
-      this.image = JSON.parse(localStorage.getItem("ProductImage"));
-      this.image.push(pr.image_paths);
-      localStorage.setItem("ProductImage", JSON.stringify(this.image));
-    }
-    else {
-      this.image.push(pr.image_paths);
-      localStorage.setItem("ProductImage", JSON.stringify(this.image));
-    }
-
-    //price
-    if (localStorage.hasOwnProperty('ProductPrice')) {
-      this.price = JSON.parse(localStorage.getItem("ProductPrice"));
-      this.price.push(pr.price);
-      localStorage.setItem("ProductPrice", JSON.stringify(this.price));
-    }
-    else {
-      this.price.push(pr.price);
-      localStorage.setItem("ProductPrice", JSON.stringify(this.price));
-    }
-    }
-    
-    
   }
   isProductRoute() {
     if (this.router.url.includes("/products")) {
@@ -114,31 +114,51 @@ export class ProductsComponent implements OnInit {
   }
   priceSort(val) {
     console.log(val.value);
+    // console.log('call', sort);
+    // this.sorting.length = 0;
+    // for (let pr in sort) {
+    //   if (sort[pr].price <= val.value) {
+    //     console.log('hey', sort[pr]);
+    //   }
+    // }
+    //this.li = this.sorting;
+    //console.log('list sorted', this.li);
+    // for (let pr in list) {
+    //   if (list[pr].price <= val.value) {
+    //     this.sort.image_paths = list[pr].image_paths;
+    //     this.sort.price = list[pr].price;
+    //   }
+    // }
+    // console.log('sorted', this.sort);
   }
   sortBy(event: MatSelectChange) {
     //console.log('hey');
     console.log(event);
   }
   ngAfterViewChecked(): void {
-    console.log(this.products);
-    //this.li = this.products;
-    this.li = this.recommendedservice.getProducts();
-    console.log('li', this.li);
+    if (this.products != undefined) {
+      this.li = this.products;
+    }
   }
   ngOnInit(): void {
     this.activated.paramMap.subscribe(params => {
       this.productType = params.get('id');
     })
-    if (this.productType == "indian") {
+    if (this.router.url.includes("/products/indian")) {
       //console.log("Indian");
+      console.log(this.indianProducts.length);
       this.productservice.getProducts().subscribe(res => {
+        //console.log('indian', res.post);
         for (var i of res.post) {
           if (i.sub_category == "Pungi" || i.sub_category == "Sarod" || i.sub_category == "Mayuri"
             || i.sub_category == "Bigul" || i.sub_category == "Ekkalam" || i.sub_category == "Pakhawaj") {
             this.indianProducts.push(i);
+            //console.log(i);
           }
         }
         //this.li = this.indianProducts;
+        this.li = this.indianProducts;
+        //console.log('sorted indian', this.indianProducts);
       })
     }
     else {

@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../components/products/product';
 
 @Injectable()
 export class BegineerService {
-    
-    begineerProducts : Array<any> = [];
 
-    constructor() { } 
+  begineerProducts: Array<Product>;
 
-    setProducts(data) {
-        this.begineerProducts = data;
-        //console.log(this.begineerProducts);
-    }
+  constructor() { }
 
-    getProducts() {
-        return this.begineerProducts;
-    }
+  setProducts(data) {
+    this.begineerProducts = data;
+    //console.log(this.begineerProducts);
+  }
+
+  getProducts() {
+    return this.begineerProducts;
+  }
 
 }
