@@ -1,6 +1,6 @@
 <!--Section: Block Content-->
 <section>
-
+    
     <!--Grid row-->
     <div class="row">
   
@@ -11,17 +11,17 @@
         <div class="card wish-list mb-3">
           <div class="card-body">
   
-            <h5 class="mb-4">Cart (<span>2</span> items)</h5>
+            <h5 class="mb-4">Cart (<span>{{cartLength}}</span> items)</h5>
   
-            <div class="row mb-4">
+            <div class="row mb-4" *ngFor="let item of cartProduct;" >
               <div class="col-md-5 col-lg-3 col-xl-3">
                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                   <img class="img-fluid w-100"
-                    src="\assets\img\keyboard1.jpg" alt="Sample">
+                    src={{item.image_paths}} alt="Sample">
                   <a href="#!">
                     <div class="mask waves-effect waves-light">
                       <img class="img-fluid w-100"
-                        src="\assets\img\keyboard1.jpg">
+                        src={{item.image_paths}}>
                       <div class="mask rgba-black-slight waves-effect waves-light"></div>
                     </div>
                   </a>
@@ -31,10 +31,8 @@
                 <div>
                   <div class="d-flex justify-content-between">
                     <div>
-                      <h5>Keyboard</h5>
-                      <p class="mb-3 text-muted text-uppercase small">Product: Yamaha Keyboard</p>
-                      <p class="mb-2 text-muted text-uppercase small">Color: Black</p>
-                      <p class="mb-3 text-muted text-uppercase small">Size: M</p>
+                      <h5>{{item.category}}</h5>
+                      <p class="mb-3 text-muted text-uppercase small">Product:{{item.product_name}}</p>
                     </div>
                     <div>
                       <div class="def-number-input number-input safari_only mb-0 w-100">
@@ -45,7 +43,7 @@
                           class="plus"><img src="\assets\img\Plus_symbol1.png" width="18" height="18"></button>
                       </div>
                       <small id="passwordHelpBlock" class="form-text text-muted text-center">
-                       
+              
                       </small>
                     </div>
                   </div>
@@ -56,12 +54,13 @@
                       <!--a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
                           class="fas fa-heart mr-1"></i> Move to wish list </a-->
                     </div>
-                    <p class="mb-0"><span><strong>Rs 10799</strong></span></p>
+                    <p class="mb-0"><span><strong>RS {{item.price}}</strong></span></p>
                   </div>
                 </div>
               </div>
             </div>
-            <hr class="mb-4">
+
+            <!--hr class="mb-4">
             <div class="row mb-4">
               <div class="col-md-5 col-lg-3 col-xl-3">
                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
@@ -99,14 +98,14 @@
                     <div>
                       <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                           class="fas fa-trash-alt mr-1"></i> Remove item </a>
-                      <!--a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                          class="fas fa-heart mr-1"></i> Move to wish list </a-->
+                      <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
+                          class="fas fa-heart mr-1"></i> Move to wish list </a>
                     </div>
                     <p class="mb-0"><span><strong>Rs 13599</strong></span></p>
                   </div>
                 </div>
               </div>
-            </div>
+            </div-->
             <p class="text-primary mb-0"><i class="fas fa-info-circle mr-1"></i> Do not delay the purchase, adding
               items to your cart does not mean booking them.</p>
   
