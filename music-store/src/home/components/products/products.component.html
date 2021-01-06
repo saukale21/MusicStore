@@ -11,11 +11,10 @@
     <mat-slider thumbLabel [displayWith]="formatLabel" step="1000" min="1000" max="30000" (input)="priceSort($event)">
     </mat-slider>
     <!-- <button mat-mini-fab (click)="priceSort(mat-slider.value)">Go</button> -->
-    <div class="filter">
-      <h2>Filter by:</h2>
-      <mat-checkbox>Recommended Instruments</mat-checkbox><br>
-      <mat-checkbox>Beginners Instruments</mat-checkbox>
-      <button mat-button style="background-color: teal; color: white;" (click)='filterby()'>Apply Filter</button>
+    <h2>Filter by:</h2>
+    <div class="filter" *ngFor="let filter of filters">
+      <mat-checkbox (change)="changeEvent($event)" [(ngModel)]="filter.checked">{{filter.name}}</mat-checkbox><br>
+
       <!-- <h2>Select your brand:</h2>
             <mat-checkbox>Yamaha</mat-checkbox><br>
             <mat-checkbox>Bina</mat-checkbox><br>
@@ -25,6 +24,7 @@
             <mat-checkbox>Ronald</mat-checkbox><br> -->
 
     </div>
+    <button mat-button id="filterbtn" [disabled]="toggleBool" (click)='filterby(li)'>Apply Filter</button>
   </div>
   <section class="text-center mb-4">
     <div class="row wow fadeIn">

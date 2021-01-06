@@ -14,7 +14,8 @@ import { LoginService } from '../../../login/services/login.service';
 })
 export class ProductsComponent implements OnInit {
   @Input() products: Array<Product>;
-  filter: Array<Product>;
+  toggleBool: boolean = true;
+  filter: Array<Product> = new Array();
   //@Input() recommended:Product;
   li: Array<Product> = new Array();
   @Input() begineerproducts: Array<Product>;
@@ -26,6 +27,8 @@ export class ProductsComponent implements OnInit {
   image = [];
   price = [];
   imageurl = environment.URL;
+  filters = [{ name: "Recommended Instruments", checked: false }, { name: "Beginners Instruments", checked: false }]
+  // btn = document.querySelector('#filterbtn');
   constructor(private router: Router, private productservice: ProductsService,
     private activated: ActivatedRoute, private recommendedservice: RecommendedService, private loginservice: LoginService) {
 
@@ -135,19 +138,52 @@ export class ProductsComponent implements OnInit {
     //console.log('hey');
     console.log(event);
   }
-  filterby() {
-    console.log('Filter');
+
+  changeEvent(event) {
+    //console.log(event.name);
+    if (event.checked) {
+      this.toggleBool = false;
+
+    }
+    else {
+      this.toggleBool = true;
+    }
+  }
+
+  filterby(list: Array<Product>) {
+    //console.log(li);
+    //this.li = [];
+    //this.filter = [];
+    if (this.filters[0].checked) {
+      //console.log('r filter')
+      for (let pr in list) {
+        if (list[pr].product_recommended == true && this.filter.includes(list[pr]) == false) {
+          this.filter.push(list[pr]);
+        }
+      }
+    }
+
+    if (this.filters[1].checked) {
+      for (let pr in list) {
+        if (list[pr].product_beginner == true && this.filter.includes(list[pr]) == false) {
+          this.filter.push(list[pr]);
+        }
+      }
+    }
+    this.li = this.filter;
+
   }
   ngAfterViewChecked(): void {
     if (this.products != undefined) {
       this.li = this.products;
     }
     //console.log('beginners', this.begineerproducts);
-    if (this.begineerproducts.length != 0) {
+    if (this.begineerproducts != undefined) {
       this.li = this.begineerproducts;
     }
   }
   ngOnInit(): void {
+
     this.activated.paramMap.subscribe(params => {
       this.productType = params.get('id');
     })
