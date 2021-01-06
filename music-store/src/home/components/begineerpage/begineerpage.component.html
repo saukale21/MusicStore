@@ -1,18 +1,14 @@
-<div class="body">
-
-    <div>
-        <video autoplay muted loop id="myVideo">
+<div class="divexternal">
+    <div id="divinternal">
+        <video autoplay muted loop class="myVideo">
             <source src="/assets/videos/video1.mov" type="video/mp4">
-            Your browser does not support HTML5 video.
         </video>
     </div>
-
-
     <div class="cards d-flex justify-content-center" [@EnterLeave]>
         <div class="card-deck">
             <!-- Card -->
             <mdb-card (click)='loadData("Guitar")'>
-                <div class="view overlay waves-light" mdbWavesEffect style="height: 250px;">
+                <div class="view overlay waves-light" mdbWavesEffect>
                     <mdb-card-img src="assets/img/beg_guitar.jpg" alt="Card image cap"></mdb-card-img>
                 </div>
                 <mdb-card-body>
@@ -25,7 +21,7 @@
                 </mdb-card-body>
             </mdb-card>
             <mdb-card (click)='loadData("Tabla")'>
-                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect>
                     <mdb-card-img src="assets/img/beg_tabla.jpg" alt="Card image cap"></mdb-card-img>
                 </div>
                 <mdb-card-body>
@@ -37,7 +33,7 @@
 
 
             <mdb-card (click)='loadData("Flute")'>
-                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect>
                     <mdb-card-img src="assets/img/beg_flute.jpg" alt="Card image cap"></mdb-card-img>
                 </div>
                 <mdb-card-body>
@@ -47,7 +43,7 @@
                 </mdb-card-body>
             </mdb-card>
             <mdb-card (click)='loadData("Keyboard")'>
-                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 250px;">
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect>
                     <mdb-card-img src="assets/img/beg_keyboard.jpg" alt="Card image cap"></mdb-card-img>
                 </div>
                 <mdb-card-body>
@@ -56,14 +52,10 @@
                     </mdb-card-title>
                 </mdb-card-body>
             </mdb-card>
-
         </div>
-
-
     </div>
 </div>
 <div>
-   
     <app-tutorial></app-tutorial>
 </div>
 <div>
