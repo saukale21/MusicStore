@@ -14,8 +14,9 @@ import { LoginService } from '../../../login/services/login.service';
 })
 export class ProductsComponent implements OnInit {
   @Input() products: Array<Product>;
+  filter: Array<Product>;
   //@Input() recommended:Product;
-  li: Array<Product>;
+  li: Array<Product> = new Array();
   @Input() begineerproducts: Array<Product>;
   indianProducts: Array<Product> = new Array();
   matSelect: any;
@@ -134,9 +135,16 @@ export class ProductsComponent implements OnInit {
     //console.log('hey');
     console.log(event);
   }
+  filterby() {
+    console.log('Filter');
+  }
   ngAfterViewChecked(): void {
     if (this.products != undefined) {
       this.li = this.products;
+    }
+    //console.log('beginners', this.begineerproducts);
+    if (this.begineerproducts.length != 0) {
+      this.li = this.begineerproducts;
     }
   }
   ngOnInit(): void {
