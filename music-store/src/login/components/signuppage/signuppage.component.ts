@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 /**
  *
@@ -45,7 +46,7 @@ export class SignupComponent implements OnInit {
   senderForm = {} ;
 
 
-  constructor(private builder: FormBuilder,private loginservice: LoginService) { 
+  constructor(private builder: FormBuilder,private loginservice: LoginService,private router: Router) { 
     this.buildForm()
 
   }
@@ -70,6 +71,7 @@ export class SignupComponent implements OnInit {
 
     this.loginservice.signUpUser(this.senderForm).subscribe(res=>{
       console.log(res);
+      this.router.navigate(['/login']);
     })
   }
 

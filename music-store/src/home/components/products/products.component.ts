@@ -17,7 +17,6 @@ export class ProductsComponent implements OnInit {
   //@Input() recommended:Product;
   li: Array<Product>;
   @Input() begineerproducts: Array<Product>;
-  @Input() selection: String;
   indianProducts: Array<Product> = new Array();
   matSelect: any;
   productType: String;
@@ -32,7 +31,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addtoCart(pr: Product) {
-    if (this.loginservice.login == false) {
+    if (this.loginservice.login == false && localStorage.getItem('login') != "true") {
       this.loginservice.setURL(this.router.url);
       this.router.navigate(['/login']);
     }
@@ -61,7 +60,7 @@ export class ProductsComponent implements OnInit {
         localStorage.setItem("ProductCategory", JSON.stringify(this.category));
       }
 
-      //Nam
+      //Name
       if (localStorage.hasOwnProperty('ProductName')) {
         this.name = JSON.parse(localStorage.getItem("ProductName"));
         this.name.push(pr.product_name);

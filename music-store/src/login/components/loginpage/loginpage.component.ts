@@ -54,7 +54,12 @@ export class LoginComponent implements OnInit {
         console.log(res);
         localStorage.setItem('token', res.token)
         this.loginservice.setLoginFlag();
+        localStorage.setItem('login',"true");
         let url = this.loginservice.getURL();
+        if(url == undefined || url == null) {
+          this.router.navigate(['/cart']);
+        }
+        else
         this.router.navigate([url]);
 
       })

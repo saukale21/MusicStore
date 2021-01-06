@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { env } from 'process';
 import { Cart } from './cart';
+import { environment } from '../../../environments/environment.prod';
+import { ProductsService } from '../../services/products.service';
 
 
 @Component({
@@ -8,7 +11,7 @@ import { Cart } from './cart';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
+  imageurl = environment.URL;
   cartLength:number;
   categoryList=[];
   nameList=[];
@@ -20,7 +23,7 @@ export class CartComponent implements OnInit {
   price:string;
   category:string;
 
-  constructor() { 
+  constructor(private productservice: ProductsService) { 
     if(localStorage.getItem('ProductCategory')!=null && localStorage.getItem('ProductName')!=null
     && localStorage.getItem('ProductImage')!=null  && localStorage.getItem('ProductPrice')!=null ) 
   {
@@ -81,6 +84,7 @@ export class CartComponent implements OnInit {
 
     }
 
+
     /*this.productlist=localStorage.getItem('ProductsCart').split("},");
     this.cartLength=this.productlist.length;
 
@@ -111,14 +115,65 @@ export class CartComponent implements OnInit {
     
     }*/
 
-    //console.log(this.cartProduct)
- 
-
-
-
+    console.log(this.cartProduct)
 
   }
 
+  totalPrice() {
+    let price = 0;
+      for(var i of this.cartProduct) {
+        price += (i.price)*(i.quantity);
+      }
+      return price;
+  }
+  increment(name) {
+    for(var i = 0;i<this.cartProduct.length;i++) {
+      if(this.cartProduct[i].product_name == name){
+        this.cartProduct[i].quantity += 1;
+    }
+    }
+  }
+  decrement(name) {
+    for(var i = 0;i<this.cartProduct.length;i++) {
+      if(this.cartProduct[i].product_name == name){
+        if(this.cartProduct[i].quantity != 1) 
+        this.cartProduct[i].quantity -= 1;
+    }
+    }
+  }
+  removeItem(name) {
+    var index = 0;
+    for(var i = 0;i<this.cartProduct.length;i++) {
+      if(this.cartProduct[i].product_name == name){
+        index = i;
+    }
+  }
+    this.cartProduct.splice(index,1);
+    console.log(this.cartProduct);
+    console.log("Removed");
+  }
+  checkout() {
+    let body = {
+      "product_details": [],
+      "total_price": 0
+    };
+    let arr : Array<any> = new Array();
+    for(var i = 0;i<this.cartProduct.length;i++) {
+      arr.push({});
+      arr[i].product_name = this.cartProduct[i].product_name;
+      arr[i].product_quantity = this.cartProduct[i].quantity;
+      arr[i].product_price = this.cartProduct[i].price;
+    }
+    body.product_details = arr;
+    body.total_price = this.totalPrice();
+    let data = JSON.stringify(body);
+    console.log(body);
+    this.productservice.saveOrder(data).subscribe(res=>{
+      console.log(res);
+      alert('Order Placed Successfully! Shop More!');
+      this.cartProduct = [];
+    })
+  }
   ngOnInit(): void {
   }
 
