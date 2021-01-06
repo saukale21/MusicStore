@@ -111,7 +111,7 @@ export class CartComponent implements OnInit {
     
     }*/
 
-    console.log(this.cartProduct)
+    //console.log(this.cartProduct)
  
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  cartLength=localStorage.getItem("ProductCategory").split(",").length;
-  constructor() { }
+  cartLength:number;
 
+  constructor() {
+
+   }
   ngOnInit(): void {
+    this.cartLength=0;
+    if(localStorage.getItem("ProductCategory").split(",")!=null)
+    {
+      this.cartLength=localStorage.getItem("ProductCategory").split(",").length;
+    }
   }
  
 

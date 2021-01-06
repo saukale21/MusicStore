@@ -81,8 +81,8 @@ export class ProductInfoComponent implements OnInit {
       }
 
     }
-
-  }
+    
+}
 
 
 
@@ -96,6 +96,12 @@ export class ProductInfoComponent implements OnInit {
     });
 
   }
+
+<<<<<<< Updated upstream
+
+
+=======
+>>>>>>> Stashed changes
 
 
 
