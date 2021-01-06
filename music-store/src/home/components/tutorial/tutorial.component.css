@@ -1,10 +1,12 @@
 
 .tutorials{
-    margin-top: 10px;
     background-color: #eeeeee;
 }
 .row{    margin: 5% 10% 5% 10%;}
-h2{
-    margin-top: 200px;
-    
+#heading{
+    margin-left: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: bold;
 }

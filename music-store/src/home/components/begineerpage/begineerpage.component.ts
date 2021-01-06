@@ -35,13 +35,13 @@ export class BegineerComponent implements OnInit {
   loadData(selection: String) {
     this.selectedproducts = [];
     this.selection = selection;
-    alert(this.selection);
+  
     var i: any;
-    alert(this.begineerproducts.length);
+   
     for (i = 0; i < this.begineerproducts.length; i += 1) {
       if (this.selection == this.begineerproducts[i].sub_category) { this.selectedproducts.push(this.begineerproducts[i]); }
     }
-    alert(this.selectedproducts.length)
+   
     console.log(this.selectedproducts);
   }
   playAudio() {
