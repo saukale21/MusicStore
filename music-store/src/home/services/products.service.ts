@@ -8,10 +8,10 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<any> {
-    return this.http.get('http://localhost:3000/product');
+    return this.http.get('https://musicstoresss.herokuapp.com/product');
 
   }
   getProductByType(type): Observable<any> {
-    return this.http.get(`http://localhost:3000/product/?instrument=${type}`)
+    return this.http.get(`https://musicstoresss.herokuapp.com/product/?instrument=${type}`)
   }
 }

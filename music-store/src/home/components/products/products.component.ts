@@ -67,12 +67,12 @@ export class ProductsComponent implements OnInit {
       // }
     })
 
-    this.productservice.getProducts().subscribe(res => {
-      console.log(res);
-    },
-      err => {
-        console.log(err);
-      })
+    // this.productservice.getProducts().subscribe(res => {
+    //   console.log(res);
+    // },
+    //   err => {
+    //     console.log(err);
+    //   })
   }
 
 }
