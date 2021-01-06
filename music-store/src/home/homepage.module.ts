@@ -22,6 +22,8 @@ import { ProductsService } from './services/products.service';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from '../app/app-routing.module';
 import {MatMenuModule} from '@angular/material/menu'
+import { RecommendedService } from './services/recommended.service';
+import { BegineerService } from './services/begineer.service';
 @NgModule({
   imports: [
     AppRoutingModule,
@@ -68,7 +70,7 @@ export class HomePageModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: HomePageModule,
-      providers: [ProductsService]
+      providers: [ProductsService,RecommendedService,BegineerService]
     }
   }
 }

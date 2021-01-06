@@ -17,4 +17,10 @@ export class ProductsService {
   getProductById(id): Observable<any> {
     return this.http.get(`https://musicstoresss.herokuapp.com/product/${id}`)
   }
+  getRecommendedProducts():Observable<any> {
+    return this.http.get('https://musicstoresss.herokuapp.com/product/?recommended=true');
+  }
+  getBegineerProducts():Observable<any> {
+    return this.http.get('https://musicstoresss.herokuapp.com/product/?begineer=true');
+  }
 }
