@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/home/services/products.service';
 import { environment } from '../../../environments/environment.prod';
+import { Product } from '../products/product';
 
 
 @Component({
@@ -14,7 +15,13 @@ export class ProductInfoComponent implements OnInit {
   //productInfo:Array<any> = [];
   id: String;
   data:any;
-  res = {};
+  res = {
+    image_paths: "",
+    product_name: "",
+    product_descriptions: "",
+    sub_category: "",
+    price: ""
+  };
   imageurl = environment.URL;
   constructor(private route: ActivatedRoute, private productservice: ProductsService) { }
 
