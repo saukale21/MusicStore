@@ -148,26 +148,18 @@ export class ProductsComponent implements OnInit {
       //console.log("Indian");
       console.log(this.indianProducts.length);
       this.productservice.getProducts().subscribe(res => {
-        //console.log('indian', res.post);
         for (var i of res.post) {
           if (i.sub_category == "Pungi" || i.sub_category == "Sarod" || i.sub_category == "Mayuri"
             || i.sub_category == "Bigul" || i.sub_category == "Ekkalam" || i.sub_category == "Pakhawaj") {
             this.indianProducts.push(i);
-            //console.log(i);
           }
         }
-        //this.li = this.indianProducts;
         this.li = this.indianProducts;
-        //console.log('sorted indian', this.indianProducts);
       })
     }
     else {
       this.productservice.getProductByType(this.productType).subscribe(res => {
-
         this.li = res.post;
-        // for (let pr of res.post) {
-        //   console.log(pr.price);
-        // }
       })
     }
 

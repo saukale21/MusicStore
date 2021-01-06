@@ -10,7 +10,7 @@ import { Product } from '../products/product';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  products: Array<Product>;
+  products: Array<Product> = new Array();
   recommended: Array<Product>;
 
 

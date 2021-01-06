@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/home/services/products.service';
 import { environment } from '../../../environments/environment.prod';
 import { Product } from '../products/product';
@@ -14,14 +14,8 @@ import { LoginService } from '../../../login/services/login.service';
 export class ProductInfoComponent implements OnInit {
 
   id: String;
-  data:any;
-  res = {
-    image_paths: "",
-    product_name: "",
-    product_descriptions: "",
-    sub_category: "",
-    price: ""
-  };
+  data: any;
+  res: Product;
 
   category = [];
   name = [];
@@ -29,7 +23,7 @@ export class ProductInfoComponent implements OnInit {
   price = [];
   imageurl = environment.URL;
 
-  constructor(private router: Router,private route: ActivatedRoute, private productservice: ProductsService,private loginservice:LoginService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private productservice: ProductsService, private loginservice: LoginService) { }
 
 
   // Add to cart
@@ -87,25 +81,23 @@ export class ProductInfoComponent implements OnInit {
       }
 
     }
-    
-}
+
+  }
 
 
 
-  ngOnInit(): void
-  {
+  ngOnInit(): void {
     //this.Imagepath = '../../assets/img/guitar3.jpg';
     this.id = this.route.snapshot.params['id'];
     // this.getProductById();
     console.log(this.id);
-    this.productservice.getProductById(this.id).subscribe(res =>
-    {
-        this.res=res.product;
+    this.productservice.getProductById(this.id).subscribe(res => {
+      this.res = res.product;
     });
 
   }
-  
 
-  
+
+
 
 }
