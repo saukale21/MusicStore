@@ -22,6 +22,6 @@ export class ProductsService {
     return this.http.get(`${this.url}/product/?recommended=true`);
   }
   getBegineerProducts(): Observable<any> {
-    return this.http.get(`${this.url}/product/?recommended=true`);
+    return this.http.get(`${this.url}/product/?beginner=true`);
   }
 }
