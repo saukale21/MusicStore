@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
   image = [];
   price = [];
   imageurl = environment.URL;
+  list: Array<Product> = new Array();
   priceRange: number = 0;
   filters = [{ name: "Recommended Instruments", checked: false }, { name: "Beginners Instruments", checked: false }]
   // btn = document.querySelector('#filterbtn');
@@ -142,28 +143,28 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  filterby(list: Array<Product>) {
-    //console.log(li);
-    //this.li = [];
-    //this.filter = [];
+  filterby() {
+
+    //console.log(this.li);
+    //this.list = this.li;
+    this.li = this.list;
+    this.filter.length = 0;
     if (this.filters[0].checked) {
       //console.log('r filter')
-      for (let pr in list) {
-        if (list[pr].product_recommended == true && this.filter.includes(list[pr]) == false) {
-          this.filter.push(list[pr]);
+      for (let pr in this.li) {
+        if (this.li[pr].product_recommended == true && this.filter.includes(this.li[pr]) == false) {
+          this.filter.push(this.li[pr]);
         }
       }
     }
-
     if (this.filters[1].checked) {
-      for (let pr in list) {
-        if (list[pr].product_beginner == true && this.filter.includes(list[pr]) == false) {
-          this.filter.push(list[pr]);
+      for (let pr in this.li) {
+        if (this.li[pr].product_beginner == true && this.filter.includes(this.li[pr]) == false) {
+          this.filter.push(this.li[pr]);
         }
       }
     }
     this.li = this.filter;
-
   }
   ngAfterViewChecked(): void {
     if (this.products != undefined) {
@@ -190,11 +191,13 @@ export class ProductsComponent implements OnInit {
           }
         }
         this.li = this.indianProducts;
+        this.list = this.li
       })
     }
     else {
       this.productservice.getProductByType(this.productType).subscribe(res => {
         this.li = res.post;
+        this.list = this.li;
       })
     }
 
