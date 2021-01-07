@@ -27,6 +27,7 @@ export class ProductsComponent implements OnInit {
   image = [];
   price = [];
   imageurl = environment.URL;
+  priceRange: number = 0;
   filters = [{ name: "Recommended Instruments", checked: false }, { name: "Beginners Instruments", checked: false }]
   // btn = document.querySelector('#filterbtn');
   constructor(private router: Router, private productservice: ProductsService,
@@ -115,24 +116,15 @@ export class ProductsComponent implements OnInit {
 
     return value;
   }
-  priceSort(val) {
-    console.log(val.value);
-    // console.log('call', sort);
-    // this.sorting.length = 0;
-    // for (let pr in sort) {
-    //   if (sort[pr].price <= val.value) {
-    //     console.log('hey', sort[pr]);
-    //   }
-    // }
-    //this.li = this.sorting;
-    //console.log('list sorted', this.li);
-    // for (let pr in list) {
-    //   if (list[pr].price <= val.value) {
-    //     this.sort.image_paths = list[pr].image_paths;
-    //     this.sort.price = list[pr].price;
-    //   }
-    // }
-    // console.log('sorted', this.sort);
+  priceSort(list: Array<Product>) {
+    console.log(this.priceRange);
+    this.filter.length = 0;
+    for (let pr in list) {
+      if (list[pr].price <= this.priceRange) {
+        this.filter.push(list[pr])
+      }
+    }
+    this.li = this.filter;
   }
   sortBy(event: MatSelectChange) {
     //console.log('hey');
