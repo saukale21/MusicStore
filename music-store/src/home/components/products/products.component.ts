@@ -129,8 +129,15 @@ export class ProductsComponent implements OnInit {
     this.li = this.filter;
   }
   sortBy(event: MatSelectChange) {
-    //console.log('hey');
-    console.log(event);
+
+    if (event.value == 'low to high') {
+      this.li.sort((a, b) => (a.price > b.price ? 1 : -1));
+      this.li = this.list;
+    }
+    if (event.value == 'high to low') {
+      this.li.sort((a, b) => (a.price > b.price ? -1 : 1));
+      this.li = this.list;
+    }
   }
 
   changeEvent(event) {
