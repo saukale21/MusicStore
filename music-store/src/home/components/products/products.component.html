@@ -7,11 +7,14 @@
 </mat-form-field>
 <div class="container-fluid" style="display:flex; flex-direction: row; ">
   <div class="col-lg-2 col-md-6 mb-4" *ngIf="isProductRoute()">
+    <button mat-button style="background-color: white; color: teal; border: 1px solid teal;"
+      (click)='clearFilter()'>Clear
+      Filter</button>
     <h3>Select your price range: </h3>
     <mat-slider thumbLabel style="color: teal;" [displayWith]="formatLabel" step="1000" min="1000" max="30000"
       [(ngModel)]="priceRange">
     </mat-slider>
-    <button mat-mini-fab (click)="priceSort(li)">Go</button>
+    <button mat-mini-fab (click)="priceSort()" style="background-color: teal;">Go</button>
     <h2>Filter by:</h2>
     <div class="filter" *ngFor="let filter of filters">
       <mat-checkbox (change)="changeEvent($event)" [(ngModel)]="filter.checked">{{filter.name}}</mat-checkbox><br>
@@ -25,7 +28,9 @@
             <mat-checkbox>Ronald</mat-checkbox><br> -->
 
     </div>
-    <button mat-button id="filterbtn" [disabled]="toggleBool" (click)='filterby()'>Apply Filter</button>
+    <button mat-button id="filterbtn" [disabled]="toggleBool" style="background-color: teal; color: white;"
+      (click)='filterby()'>Apply Filter</button>
+
   </div>
   <section class="text-center mb-4">
     <div class="row wow fadeIn">

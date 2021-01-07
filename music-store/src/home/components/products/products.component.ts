@@ -117,12 +117,13 @@ export class ProductsComponent implements OnInit {
 
     return value;
   }
-  priceSort(list: Array<Product>) {
+  priceSort() {
     console.log(this.priceRange);
+    this.li = this.list
     this.filter.length = 0;
-    for (let pr in list) {
-      if (list[pr].price <= this.priceRange) {
-        this.filter.push(list[pr])
+    for (let pr in this.li) {
+      if (this.li[pr].price <= this.priceRange) {
+        this.filter.push(this.li[pr])
       }
     }
     this.li = this.filter;
@@ -165,6 +166,9 @@ export class ProductsComponent implements OnInit {
       }
     }
     this.li = this.filter;
+  }
+  clearFilter() {
+    this.li = this.list;
   }
   ngAfterViewChecked(): void {
     if (this.products != undefined) {
