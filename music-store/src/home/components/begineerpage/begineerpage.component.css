@@ -1,7 +1,9 @@
 
 .cards{
     margin: 5% 10% 5% 10%;
+    
   }
+ 
   
   .divexternal{
     height: 100vh;
@@ -33,3 +35,10 @@
   .view{
     height: 40vh;
   }
+  #products{
+    margin-left: 10px;
+    text-transform: uppercase;
+    padding: 10px;
+    font-family: monospace;
+    font-weight: bold;
+}

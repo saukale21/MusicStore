@@ -1,6 +1,8 @@
+import { TutorialComponent } from './../tutorial/tutorial.component';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+
 @Component({
   selector: 'app-begineer',
   templateUrl: './begineerpage.component.html',
@@ -35,9 +37,13 @@ export class BegineerComponent implements OnInit {
   }
 
   //function
-  loadData(selection: String) {
+  loadData(selection: String,el: HTMLElement) {
+   
     this.selectedproducts = [];
     this.selection = selection;
+
+    //creating obj and calling function
+
 
     var i: any;
 
@@ -45,7 +51,15 @@ export class BegineerComponent implements OnInit {
       if (this.selection == this.begineerproducts[i].sub_category) { this.selectedproducts.push(this.begineerproducts[i]); }
     }
 
-    console.log('selected', this.selectedproducts);
+    let ob=new TutorialComponent();
+    ob.loadTutorials(this.selection);
+    //play audio
+    if(this.selection=='Guitar')
+    this.playAudio();
+    // scroll(target);
+    el.scrollIntoView({behavior: 'smooth'});
+    // console.log(this.selectedproducts);
+
   }
   playAudio() {
     let audio = new Audio();
@@ -54,4 +68,11 @@ export class BegineerComponent implements OnInit {
     audio.play();
   }
 
+
+  
+  //   scroll(el: HTMLElement) {
+  //     el.scrollIntoView({behavior: 'smooth'});
+  // }
 }
+
+
