@@ -27,11 +27,11 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
           <!--Indicators below slide-->
-            <ol class="carousel-indicators">
+            <!-- <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+            </ol> -->
 
             <!--Slider start-->
             <div class="carousel-inner">
@@ -43,35 +43,41 @@
                   </div>
 
                   <div class="carousel-caption">
-                    <h3>Shalini Singh</h3>
-                    <h5>Sound Recordist</h5>
-                    <p>For a novice these people are very co-operative. For experts these people are informative.
-                      For professionals these people are suggestive. So whatever type of customers you are. This website
-                    is the right place to drop in for all sort of professional gears </p>
+                    <h3>Saurabh Kale</h3>
+                    <img src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                    <img src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                    <img src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                    <img src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                    <h5>4</h5>
+                    <p>You name the gear and they have it. If not then they will get it for you and at a
+                      very reasonable price. I would recommend them for best price, quality and after sale service.
+                      The best retailer and service provider in India.</p>
                   </div>
 
               </div>
               
-                <!--Slide 2-->
-              <div class="carousel-item">
+              <div class="carousel-item" *ngFor="let reviews of review">
                   
                 <div class="img-area">
                   <img class="d-block w-100" src="assets/img/profile.png" alt="Second slide">
                 </div>
 
                 <div class="carousel-caption">
-                  <h3>Saurabh Kale</h3>
-                  <h5>Sound Engineer</h5>
-                  <p>You name the gear and they have it. If not then they will get it for you and at a
-                      very reasonable price. I would recommend them for best price, quality and after sale service.
-                      The best retailer and service provider in India.
+                  <h3>{{reviews.username}}</h3>
+                  <img *ngIf="reviews.rating > 0" src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                  <img *ngIf="reviews.rating > 1" src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                  <img *ngIf="reviews.rating > 2" src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                  <img *ngIf="reviews.rating > 3" src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                  <img *ngIf="reviews.rating > 4" src="../../../assets/icon/star.png" alt="Star" height="15px" width="15px"/>
+                  <h5>{{reviews.rating}}</h5>
+                  <p>{{reviews.description}}
                   </p>
                 </div>
                 
               </div>
 
-                <!--Slider 3-->
-              <div class="carousel-item">
+                
+               <!-- <div class="carousel-item">
                   
                 <div class="img-area">
                   <img class="d-block w-100" src="assets/img/profile.png" alt="Third slide">
@@ -83,9 +89,9 @@
                   <p>This website is best in terms of quality and price. I recommend it for professional.
                       You will get everything you need related to music at an affordable price. Give it a try! 
                   </p>
-                </div>
+                </div> --> 
 
-              </div>
+              
             <!--Slider end-->
             </div>
 

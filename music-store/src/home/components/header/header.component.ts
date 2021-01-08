@@ -15,10 +15,13 @@ export class HeaderComponent implements OnInit {
    }
   ngOnInit(): void {
     this.cartLength=0;
-    if(localStorage.getItem("ProductCategory").split(",")!=null)
-    {
-      this.cartLength=localStorage.getItem("ProductCategory").split(",").length;
+    if(localStorage.hasOwnProperty('ProductCategory')) {
+      if(localStorage.getItem("ProductCategory").split(",")!=null)
+      {
+        this.cartLength=localStorage.getItem("ProductCategory").split(",").length;
+      }
     }
+    
   }
  
 

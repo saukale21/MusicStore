@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { env } from 'process';
 import { Cart } from './cart';
 import { environment } from '../../../environments/environment.prod';
 import { ProductsService } from '../../services/products.service';
-
+import { Router } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UserReviewService } from '../../services/user_review.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,7 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  validatingForm: FormGroup;
   imageurl = environment.URL;
   cartLength:number;
   categoryList=[];
@@ -22,8 +24,9 @@ export class CartComponent implements OnInit {
   image_path:string;
   price:string;
   category:string;
+  review:string;
 
-  constructor(private productservice: ProductsService) { 
+  constructor(private productservice: ProductsService, private router: Router, private reviewservice: UserReviewService) { 
     if(localStorage.getItem('ProductCategory')!=null && localStorage.getItem('ProductName')!=null
     && localStorage.getItem('ProductImage')!=null  && localStorage.getItem('ProductPrice')!=null ) 
   {
@@ -81,39 +84,11 @@ export class CartComponent implements OnInit {
       }
 
       this.cartProduct.push(new Cart(this.category,this.product_name,this.image_path,this.price));
+      if(this.cartProduct[0].product_name == "") {
+        this.cartProduct = [];
+      }
 
     }
-
-
-    /*this.productlist=localStorage.getItem('ProductsCart').split("},");
-    this.cartLength=this.productlist.length;
-
-    //console.log(this.productlist)
-
-    for(let i=0;i<this.productlist.length;i++)
-    {
-      this.category = this.productlist[i].split(',')[2];
-      this.category = this.category.split(':')[1];
-
-      this.product_name = this.productlist[i].split(',')[3];
-      this.product_name = this.product_name.split(':')[1];
-
-      this.image_path = this.productlist[i].split(',')[6];
-      console.log(this.image_path)
-      this.image_path = this.image_path.split(':')[1];
-
-      this.price = this.productlist[i].split(',')[7];
-      console.log(this.price);
-      this.price = this.price.split(':')[1];
-
-      //console.log(this.category)
-      //console.log(this.product_name)
-      //console.log(this.image_path)
-      //console.log(this.price)
-      this.cartProduct.push(new Cart(this.category,this.product_name,this.image_path,this.price));
-      console.log(this.cartProduct)
-    
-    }*/
 
     console.log(this.cartProduct)
 
@@ -151,6 +126,27 @@ export class CartComponent implements OnInit {
     this.cartProduct.splice(index,1);
     console.log(this.cartProduct);
     console.log("Removed");
+    //changes
+    var obj = JSON.parse(localStorage.getItem('ProductName'));
+    obj.splice(index,1);
+    console.log(obj);
+    localStorage.setItem('ProductName',JSON.stringify(obj));
+
+    var obj1 = JSON.parse(localStorage.getItem('ProductImage'));
+    obj1.splice(index,1);
+    console.log(obj1);
+    localStorage.setItem('ProductImage',JSON.stringify(obj1));
+
+    var obj2 = JSON.parse(localStorage.getItem('ProductPrice'));
+    obj2.splice(index,1);
+    console.log(obj2);
+    localStorage.setItem('ProductPrice',JSON.stringify(obj2));
+
+    var obj3 = JSON.parse(localStorage.getItem('ProductCategory'));
+    obj3.splice(index,1);
+    console.log(obj3);
+    localStorage.setItem('ProductCategory',JSON.stringify(obj3));
+
   }
   checkout() {
     let body = {
@@ -172,9 +168,43 @@ export class CartComponent implements OnInit {
       console.log(res);
       alert('Order Placed Successfully! Shop More!');
       this.cartProduct = [];
+      localStorage.setItem('ProductName','[]');
+      localStorage.setItem('ProductCategory','[]');
+      localStorage.setItem('ProductPrice','[]');
+      localStorage.setItem('ProductImage','[]');
+    },
+    err=>{
+      alert("You are logged out. Please login again and checkout");
+      this.router.navigate(['/login']);
     })
   }
+
   ngOnInit(): void {
+    this.validatingForm = new FormGroup({
+      contactFormModalMessage: new FormControl('', Validators.required),
+      contactFormModalRating: new FormControl('', Validators.required)
+    });
+  }
+
+  get contactFormModalMessage() {
+    return this.validatingForm.get('contactFormModalMessage');
+  }
+  get contactFormModalRating() {
+    return this.validatingForm.get('contactFormModalRating');
+  }
+
+  onSubmit() {
+    console.log(this.contactFormModalMessage.value);
+    console.log(this.contactFormModalRating.value);
+    var obj = {
+      "rating": this.contactFormModalRating.value,
+      "description": this.contactFormModalMessage.value
+    };
+    this.reviewservice.postUserReview(obj).subscribe(res=>{
+      console.log(res);
+    });
+
   }
 
 }
+

@@ -22,7 +22,7 @@
 
         <!--CATEGORY-->
         <li class="nav-item dropdown">
-          <button mat-button class="dropdown-toggle nav-link" [matMenuTriggerFor]="menu">Category</button>
+          <button mat-button class="dropdown-toggle nav-link" [matMenuTriggerFor]="menu" [routerLinkActive]="['active']">Category</button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="string">String</button>
             <button mat-menu-item [matMenuTriggerFor]="wind">Wind</button>
@@ -68,67 +68,16 @@
             <button mat-menu-item><a [routerLink]="['/products','Synthesizer']" target="_parent">Synthesizer</a></button>
             <button mat-menu-item><a [routerLink]="['/products','Harmonium']" target="_parent">Harmonium</a></button>
           </mat-menu>
-
-
-
-          <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Category
-          </a> -->
-          
-          <!-- <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
-            <div class="column">
-              <div class="dropdown-item">
-                <h4>String instruments</h4>
-              </div>
-              <ul>
-                <li><a [routerLink]="['/products','Guitar']" target="_parent">Guitar</a></li>
-                <li><a [routerLink]="['/products','Violin']" target="_parent">Violin</a></li>
-                <li><a [routerLink]="['/products','Celio']" target="_parent">Celio</a></li>
-                <li><a [routerLink]="['/products','Sarod']" target="_parent">Sarod</a></li>
-              </ul>
-              <div class="dropdown-item">
-                <h4>Percussion Instruments</h4>
-              </div>
-              <ul>
-                <li><a [routerLink]="['/products','Drums']" target="_parent">Drums</a></li>
-                <li><a [routerLink]="['/products','Triangle']" target="_parent">Triangle</a></li>
-                <li><a [routerLink]="['/products','Djembe']" target="_parent">Djembe</a></li>
-                <li><a [routerLink]="['/products','Tabla']" target="_parent">Tabla</a></li>
-              </ul>
-            </div>
-            <div class="dropdown-divider"></div>
-            <div class="column">
-              <div class="dropdown-item">
-                <h4>Brass Instruments</h4>
-              </div>
-              <ul>
-                <li><a [routerLink]="['/products','French Horn']" target="_parent">French Horn</a></li>
-                <li><a [routerLink]="['/products','Trumpet']" target="_parent">Trumpet</a></li>
-                <li><a [routerLink]="['/products','Kahal']" target="_parent">Kahal</a></li>
-                <li><a [routerLink]="['/products','Tuba']" target="_parent">Tuba</a></li>
-              </ul>
-              <div class="dropdown-item">
-                <h4>Key Instruments</h4>
-              </div>
-              <ul>
-                <li><a [routerLink]="['/products','Keyboard']" target="_parent">Keyboard</a></li>
-                <li><a [routerLink]="['/products','Piano']" target="_parent">Piano</a></li>
-                <li><a [routerLink]="['/products','Synthesizer']" target="_parent">Synthesizer</a></li>
-                <li><a [routerLink]="['/products','Harmonium']" target="_parent">Harmonium</a></li>
-              </ul>
-            </div>
-          </div> -->
         </li>
 
         <!--RARE INSTRUMENTS-->
         <li class="nav-item">
-          <a class="nav-link" href="products/indian">Indian Instruments</a>
+          <a class="nav-link" href="products/indian" [routerLinkActive]="['active']">Indian Instruments</a>
         </li>
 
         <!--BLOGS-->
         <li class="nav-item">
-          <a class="nav-link" href="blogs">Blogs</a>
+          <a class="nav-link" href="blogs" [routerLinkActive]="['active']">Blogs</a>
         </li>
 
       </ul>

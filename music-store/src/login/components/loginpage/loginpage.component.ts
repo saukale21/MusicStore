@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
     if(this.loginFlag != true) {
       this.loginservice.loginUser(this.loginForm.value).subscribe(res=>{
         console.log(res);
+        localStorage.setItem('token','');
         localStorage.setItem('token', res.token)
         this.loginservice.setLoginFlag();
         localStorage.setItem('login',"true");
