@@ -55,7 +55,7 @@ describe('LoginComponent', () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h5').textContent).toContain('Login Here');
+    expect(compiled.querySelector('h3').textContent).toContain('Login Here');
   });
   it('submitting a form',() =>{
     component.login();

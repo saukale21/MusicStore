@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
 import { SocialloginService } from '../../services/sociallogin.service';
 
 
@@ -71,14 +71,12 @@ export class LoginComponent implements OnInit {
   public socialSignIn(socialProvider: string) {
     let socialPlatformProvider;
     this.loginFlag = true;
-    if ( socialProvider == 'facebook') {
-        socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    } else if ( socialProvider == 'google') {
+    if ( socialProvider == 'google') {
         socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.OAuth.signIn(socialPlatformProvider).then(user => {
         console.log(socialProvider, user);
-        if(user.provider == "GOOGLE" || user.provider =="FACEBOOK")
+        if(user.provider == "GOOGLE ")
         {
           this.router.navigate(['/cart']);  
         }
