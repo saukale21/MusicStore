@@ -15,7 +15,8 @@ export class ProductInfoComponent implements OnInit {
 
   id: String;
   data: any;
-  res: Product;
+  //res: Product;
+  res = {image_paths:"",product_name:"",product_descriptions:"",sub_category:"",price:0};
 
   category = [];
   name = [];
@@ -27,8 +28,8 @@ export class ProductInfoComponent implements OnInit {
 
 
   // Add to cart
-  addtoCart(pr: Product) {
-
+  //addtoCart(pr: Product) {
+  addtoCart(pr) {
     if (this.loginservice.login == false) {
       this.loginservice.setURL(this.router.url);
       this.router.navigate(['/login']);
@@ -87,10 +88,7 @@ export class ProductInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.Imagepath = '../../assets/img/guitar3.jpg';
     this.id = this.route.snapshot.params['id'];
-    // this.getProductById();
-    console.log(this.id);
     this.productservice.getProductById(this.id).subscribe(res => {
       this.res = res.product;
     });

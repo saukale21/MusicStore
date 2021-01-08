@@ -22,7 +22,7 @@
 
         <!--CATEGORY-->
         <li class="nav-item dropdown">
-          <button mat-button class="dropdown-toggle nav-link" [matMenuTriggerFor]="menu" [routerLinkActive]="['active']">Category</button>
+          <button mat-button class="dropdown-toggle nav-link" [matMenuTriggerFor]="menu">Category</button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="string">String</button>
             <button mat-menu-item [matMenuTriggerFor]="wind">Wind</button>
@@ -72,12 +72,12 @@
 
         <!--RARE INSTRUMENTS-->
         <li class="nav-item">
-          <a class="nav-link" href="products/indian" [routerLinkActive]="['active']">Indian Instruments</a>
+          <a class="nav-link" href="products/indian">Indian Instruments</a>
         </li>
 
         <!--BLOGS-->
         <li class="nav-item">
-          <a class="nav-link" href="blogs" [routerLinkActive]="['active']">Blogs</a>
+          <a class="nav-link" href="blogs">Blogs</a>
         </li>
 
       </ul>
