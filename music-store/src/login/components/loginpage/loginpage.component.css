@@ -54,7 +54,7 @@ input:hover{
   height: 40px;
   border-radius: 3px;
   border: 1px solid #e6e6e6;
-  background-color:rgb(248, 61, 61);
+  background-color: #fff;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
