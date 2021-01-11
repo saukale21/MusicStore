@@ -20,7 +20,7 @@
 
         <p>{{blog.description}}</p>
         <!-- Post data -->
-        <p>by <strong>{{blog.username}}</strong>, {{blog.date}}</p>
+        <p>by <strong>{{blog.username}}</strong>, {{blog.date | slice:0:10}}</p>
       </div>
     </mdb-carousel-item>
   </mdb-carousel>

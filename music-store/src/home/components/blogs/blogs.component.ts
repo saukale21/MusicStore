@@ -11,6 +11,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 export class BlogsComponent implements OnInit {
   blogsList: Array<any>;
+
   validatingForm: FormGroup;
   constructor(private blogsService:BlogsService) {
     
@@ -25,7 +26,8 @@ export class BlogsComponent implements OnInit {
     this.blogsService.getBlogs().subscribe(res=>{
       console.log(res.post);
       this.blogsList = res.post;
-      console.log(this.blogsList)
+      console.log(this.blogsList);
+     
     })
   }
   get blogModalTitle() {
