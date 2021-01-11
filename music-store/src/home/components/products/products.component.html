@@ -36,7 +36,7 @@
     <div class="row wow fadeIn">
       <div class="col-lg-3 col-md-6 mb-4" *ngFor="let pr of li">
         <mat-card class="card">
-          <img [src]='imageurl+"/"+pr.image_paths' alt="">
+          <img [src]='imageurl+"/"+pr.image_paths' alt="" onerror="this.src='/assets/img/guitar2.jpg'">
           <h3>{{pr.product_name}}</h3>
           <div class="details">
             <h5 class="title">{{pr.product_name}}</h5>

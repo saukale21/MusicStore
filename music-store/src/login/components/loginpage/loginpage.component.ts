@@ -11,12 +11,12 @@ import { Socialusers } from 'src/login/socialusers';
 
 
 
-function symbolValidator(control) { 
-  if(control.hasError('required')) return null;
-  if(control.hasError('minlength')) return null;
+function symbolValidator(control) {
+  if (control.hasError('required')) return null;
+  if (control.hasError('minlength')) return null;
 
 
-  if(control.value.indexOf('@') > -1) {
+  if (control.value.indexOf('@') > -1) {
     return null
   } else {
     return { symbol: true }
@@ -37,52 +37,51 @@ export class LoginComponent implements OnInit {
   socialusers = new Socialusers();
 
 
-  constructor(private formBuilder: FormBuilder,private loginservice: LoginService,public OAuth : SocialAuthService,
-    private SocialLoginService: SocialloginService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private loginservice: LoginService, public OAuth: SocialAuthService,
+    private SocialLoginService: SocialloginService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm  =  this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, symbolValidator, Validators.minLength(4)]],
-  });
-}
+    });
+  }
 
 
   login() {
     console.log(this.loginForm.value);
-    if(this.loginFlag != true) {
-      this.loginservice.loginUser(this.loginForm.value).subscribe(res=>{
+    if (this.loginFlag != true) {
+      this.loginservice.loginUser(this.loginForm.value).subscribe(res => {
         console.log(res);
-        localStorage.setItem('token','');
+        localStorage.setItem('token', '');
         localStorage.setItem('token', res.token)
         this.loginservice.setLoginFlag();
-        localStorage.setItem('login',"true");
+        localStorage.setItem('login', "true");
         let url = this.loginservice.getURL();
-        if(url == undefined || url == null) {
+        if (url == undefined || url == null) {
           this.router.navigate(['/cart']);
         }
         else
-        this.router.navigate([url]);
+          this.router.navigate([url]);
 
       })
     }
-    
+
   }
   public socialSignIn(socialProvider: string) {
     let socialPlatformProvider;
     this.loginFlag = true;
-    if ( socialProvider == 'google') {
-        socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    if (socialProvider == 'google') {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     this.OAuth.signIn(socialPlatformProvider).then(user => {
-        console.log(socialProvider, user);
-        if(user.provider == "GOOGLE ")
-        {
-          this.router.navigate(['/cart']);  
-        }
+      console.log(socialProvider, user);
+      if (user.provider == "GOOGLE ") {
+        this.router.navigate(['/cart']);
+      }
     })
 
-}
+  }
 }
 
 
