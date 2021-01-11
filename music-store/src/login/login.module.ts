@@ -2,56 +2,60 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/loginpage/loginpage.component';
 import { SignupComponent } from './components/signuppage/signuppage.component';
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
-import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
 import { SocialloginService } from './services/sociallogin.service';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginRoutingModule } from './login-routing.module';
 
 
 @NgModule({
-    imports: [
+  imports: [
     CommonModule,
-    BrowserModule,
-    AppRoutingModule,
+    //BrowserModule,
+    //AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    //HttpClientModule,
+    LoginRoutingModule
 
-    
-    ],
-    exports: [LoginComponent, SignupComponent],
-    declarations: 
+
+  ],
+  exports: [SignupComponent],
+  declarations:
     [
-        LoginComponent,
-        SignupComponent
+      LoginComponent,
+      SignupComponent
     ],
-    
-    providers: [[ SocialAuthService,
-      {
+
+  providers: [[SocialAuthService,
+    {
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,
-        providers: [ 
+        providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
               '95164095729-gkv9ptr3gmkrnqldqkm7kr6ivp4hk33s.apps.googleusercontent.com'
             )
           },
-          
+
         ]
       } as SocialAuthServiceConfig,
     },
     SocialloginService],],
 })
-export class LoginModule { 
-    static forRoot(): ModuleWithProviders {
-        return {
-          ngModule: LoginModule,
-          providers: [LoginService]
-        }
-      }
+export class LoginModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: LoginModule,
+      providers: [LoginService]
+    }
+  }
 }

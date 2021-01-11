@@ -8,12 +8,14 @@ import { LoginComponent } from '../login/components/loginpage/loginpage.componen
 import { SignupComponent } from '../login/components/signuppage/signuppage.component';
 import { BegineerComponent } from '../home/components/begineerpage/begineerpage.component';
 import { BlogsComponent } from '../home/components/blogs/blogs.component';
+import { CommonModule } from '@angular/common';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
     path: 'home',
@@ -37,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    loadChildren: '../login/login.module#LoginModule'
   },
   {
     path: 'signup',
@@ -53,13 +55,14 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: HomeComponent
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
+  imports: [CommonModule, RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
