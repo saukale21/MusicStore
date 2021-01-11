@@ -24,6 +24,8 @@ export class BegineerComponent implements OnInit {
   begineerproducts: Array<any> = [];
   selectedproducts: Array<any> = [];
   selection: String;
+  audio = new Audio();
+
   constructor(private productservice: ProductsService) { }
 
   ngOnInit(): void {
@@ -50,22 +52,30 @@ export class BegineerComponent implements OnInit {
     for (i = 0; i < this.begineerproducts.length; i += 1) {
       if (this.selection == this.begineerproducts[i].sub_category) { this.selectedproducts.push(this.begineerproducts[i]); }
     }
-
+    
+    this.playAudio(this.selection);
     let ob=new TutorialComponent();
     ob.loadTutorials(this.selection);
-    //play audio
-    if(this.selection=='Guitar')
-    this.playAudio();
-    // scroll(target);
+  
+ 
+ 
     el.scrollIntoView({behavior: 'smooth'});
-    // console.log(this.selectedproducts);
+  
 
   }
-  playAudio() {
-    let audio = new Audio();
-    audio.src = "/assets/audios/song.mp3";
-    audio.load();
-    audio.play();
+  playAudio(selection:String) {
+
+  
+    if(selection=='Guitar')
+    this.audio.src = "/assets/audios/guitar.mp3";
+    else if(selection=='Keyboard')
+    this.audio.src = "/assets/audios/keyboard.mp3";
+    else if(selection=='Tabla')
+    this.audio.src = "/assets/audios/tabla.mp3";
+    else if(selection=='Flute')
+    this.audio.src = "/assets/audios/flute.mp3";
+    this.audio.load();
+    this.audio.play();
   }
 
 
