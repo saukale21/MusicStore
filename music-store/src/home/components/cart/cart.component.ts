@@ -94,6 +94,12 @@ export class CartComponent implements OnInit {
 
   }
 
+  //Trackby
+  trackByCartProduct(index:number , cartProduct:any): string {
+    return cartProduct.product_name;
+
+  }
+
   totalPrice() {
     let price = 0;
       for(var i of this.cartProduct) {
