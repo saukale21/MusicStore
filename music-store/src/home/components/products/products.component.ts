@@ -6,14 +6,17 @@ import { Product } from './product';
 import { RecommendedService } from '../../services/recommended.service';
 import { environment } from '../../../environments/environment.prod';
 import { LoginService } from '../../../login/services/login.service';
+import { OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
   providers: [ProductsService]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
   @Input() products: Array<Product>;
+  productSubscription: Subscription;
   toggleBool: boolean = true;
   filter: Array<Product> = new Array();
   //@Input() recommended:Product;
@@ -191,10 +194,11 @@ export class ProductsComponent implements OnInit {
     this.activated.paramMap.subscribe(params => {
       this.productType = params.get('id');
     })
+
     if (this.router.url.includes("/products/indian")) {
       //console.log("Indian");
       console.log(this.indianProducts.length);
-      this.productservice.getProducts().subscribe(res => {
+      let sub1 = this.productservice.getProducts().subscribe(res => {
         for (var i of res.post) {
           if (i.sub_category == "Pungi" || i.sub_category == "Sarod" || i.sub_category == "Mayuri"
             || i.sub_category == "Bigul" || i.sub_category == "Ekkalam" || i.sub_category == "Pakhawaj") {
@@ -204,12 +208,14 @@ export class ProductsComponent implements OnInit {
         this.li = this.indianProducts;
         this.list = this.li
       })
+      this.productSubscription.add(sub1);
     }
     else {
-      this.productservice.getProductByType(this.productType).subscribe(res => {
+      var sub1 = this.productservice.getProductByType(this.productType).subscribe(res => {
         this.li = res.post;
         this.list = this.li;
       })
+      this.productSubscription.add(sub1);
     }
 
     // if(this.router.url == 'http://localhost:4200') {
@@ -225,4 +231,7 @@ export class ProductsComponent implements OnInit {
     //   })
   }
 
+  ngOnDestroy(): void {
+    this.productSubscription.unsubscribe();
+  }
 }

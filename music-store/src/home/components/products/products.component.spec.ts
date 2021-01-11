@@ -45,4 +45,5 @@ describe('ProductsComponent', () => {
     const spy = spyOn(component, 'sortBy').and.callThrough();
     expect(spy).not.toHaveBeenCalled();
   })
+
 });
