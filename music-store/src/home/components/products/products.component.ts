@@ -198,7 +198,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     if (this.router.url.includes("/products/indian")) {
       //console.log("Indian");
       console.log(this.indianProducts.length);
-      let sub1 = this.productservice.getProducts().subscribe(res => {
+      this.productSubscription = this.productservice.getProducts().subscribe(res => {
         for (var i of res.post) {
           if (i.sub_category == "Pungi" || i.sub_category == "Sarod" || i.sub_category == "Mayuri"
             || i.sub_category == "Bigul" || i.sub_category == "Ekkalam" || i.sub_category == "Pakhawaj") {
@@ -208,14 +208,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.li = this.indianProducts;
         this.list = this.li
       })
-      this.productSubscription.add(sub1);
     }
     else {
-      var sub1 = this.productservice.getProductByType(this.productType).subscribe(res => {
+      this.productSubscription = this.productservice.getProductByType(this.productType).subscribe(res => {
         this.li = res.post;
         this.list = this.li;
       })
-      this.productSubscription.add(sub1);
+
     }
 
     // if(this.router.url == 'http://localhost:4200') {
