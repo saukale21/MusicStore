@@ -22,4 +22,10 @@ describe('TutorialComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should render title in <h2> in the view ', () =>{
+    const fixture = TestBed.createComponent(TutorialComponent);
+    fixture.detectChanges();
+    const compile = fixture.nativeElement;
+    expect(compile.querySelector('h2').textContet).toContain('TUTORIALS');
+  })
 });
