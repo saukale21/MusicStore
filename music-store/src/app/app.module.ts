@@ -10,7 +10,6 @@ import { HomeComponent } from '../home/components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     LoginModule.forRoot(),
     HomePageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    
 
   ],
   providers: [],

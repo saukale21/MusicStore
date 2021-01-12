@@ -1,13 +1,15 @@
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatMenuModule],
       declarations: [ HeaderComponent ]
     })
     .compileComponents();
@@ -44,7 +46,7 @@ describe('HeaderComponent', () => {
         let app= fixture.debugElement.componentInstance;
         fixture.detectChanges(); 
         let compiled= fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('.qty').textContent).toContain('2');
+        expect(compiled.querySelector('.qty').textContent).toContain('0');
         });
       
       /*--------------Style testing---------------------*/

@@ -1,6 +1,10 @@
+import { UserReviewService } from './../../services/user_review.service';
+import { RecommendedService } from './../../services/recommended.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ProductsService } from 'src/home/services/products.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HomeComponent } from './home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +12,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      imports:[HttpClientModule],
+      declarations: [ HomeComponent ],
+      providers:[ProductsService,RecommendedService,UserReviewService]
     })
     .compileComponents();
   }));

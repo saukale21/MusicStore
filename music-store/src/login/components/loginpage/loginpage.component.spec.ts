@@ -1,8 +1,14 @@
+import { RouterTestingModule } from '@angular/router/testing';
+
+
+import { LoginService } from './../../services/login.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
 import { LoginComponent } from './loginpage.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SocialloginService } from 'src/login/services/sociallogin.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -10,9 +16,26 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports :[FormsModule,ReactiveFormsModule]
-
+      
+      imports :[FormsModule,ReactiveFormsModule,HttpClientModule,RouterTestingModule],
+      declarations: [ LoginComponent],
+      providers:[LoginService,[SocialAuthService,
+        {
+          provide: 'SocialAuthServiceConfig',
+          useValue: {
+            autoLogin: false,
+            providers: [
+              {
+                id: GoogleLoginProvider.PROVIDER_ID,
+                provider: new GoogleLoginProvider(
+                  '95164095729-gkv9ptr3gmkrnqldqkm7kr6ivp4hk33s.apps.googleusercontent.com'
+                )
+              },
+    
+            ]
+          } as SocialAuthServiceConfig,
+        },
+        SocialloginService]]
     })
     .compileComponents();
   }));

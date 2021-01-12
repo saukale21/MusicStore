@@ -1,5 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
 
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BlogsComponent } from './blogs.component';
 
 describe('BlogsComponent', () => {
@@ -8,6 +10,7 @@ describe('BlogsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[HttpClientModule, MDBBootstrapModule.forRoot(),],
       declarations: [ BlogsComponent ]
     })
     .compileComponents();

@@ -44,7 +44,7 @@ describe('FooterComponent', () => {
         let app= fixture.debugElement.componentInstance;
         fixture.detectChanges(); 
         let compiled= fixture.debugElement.nativeElement;
-        expect(compiled.querySelectorAll('.fa').length).toEqual(3);
+        expect(compiled.querySelectorAll('.icon').length).toEqual(3);
         });
   
       /*---------------------------style testing-----------------------------*/
@@ -66,13 +66,13 @@ describe('FooterComponent', () => {
           expect(getComputedStyle(title).getPropertyValue('font-family')).toEqual('monospace');
           });
 
-          it('footer font colour should be black',async()=>{
+          it('footer font colour ',async()=>{
             let fixture= TestBed.createComponent(FooterComponent)
             let app= fixture.debugElement.componentInstance;
             fixture.detectChanges(); 
             let compiled= fixture.debugElement.nativeElement;
             let title=compiled.querySelector('footer');
-            expect(getComputedStyle(title).getPropertyValue('color')).toEqual('rgb(0, 0, 0)');
+            expect(getComputedStyle(title).getPropertyValue('color')).toEqual('rgb(33, 37, 41)');
             });
 
 });
