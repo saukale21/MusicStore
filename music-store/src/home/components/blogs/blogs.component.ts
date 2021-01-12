@@ -27,6 +27,7 @@ export class BlogsComponent implements OnInit {
       console.log(res.post);
       this.blogsList = res.post;
       console.log(this.blogsList);
+      this.blogsService.getToken()
      
     })
   }
@@ -40,13 +41,26 @@ export class BlogsComponent implements OnInit {
   method(){
     let title=this.blogModalTitle.value;
     let data=this.blogModalText.value;
+    var obj;
     //validate button
-    
-    var obj={
-      title:title,
-      description:data,
-      date:new Date()
-    }
+   let localItem = localStorage.getItem('googleLogin');
+      if(localItem == "true"){
+        obj={
+          title:title,
+          description:data,
+          date:new Date(),
+          token:localStorage.getItem('googleToken'),
+        }
+      }
+        else {
+         obj={
+            title:title,
+            description:data,
+            date:new Date()
+          }
+        }
+      
+   
     this.blogsService.postBlog(obj).subscribe(res=>{
       console.log(res);
       window.location.reload();

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from 'events';
 import { ProductsService } from '../../services/products.service';
@@ -15,9 +16,16 @@ export class HomeComponent implements OnInit {
   recommended: Array<Product>;
   review: Array<any> = new Array();
 
-  constructor(private productservice: ProductsService, private recommendedservice: RecommendedService, private reviewservice: UserReviewService) { }
+  constructor(private productservice: ProductsService, private recommendedservice: RecommendedService, private reviewservice: UserReviewService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log("hii");
+    this.route.queryParams.subscribe(params=>{
+      console.log("Query",params['token']);
+      localStorage.setItem("googleToken",'');
+      localStorage.setItem("googleToken",params['token']);
+    })
+
     this.productservice.getRecommendedProducts().subscribe(res => {
       console.log(res);
       this.recommended = res;

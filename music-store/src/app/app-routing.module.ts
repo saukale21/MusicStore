@@ -14,8 +14,10 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
+    //redirectTo: '/home',
+    //pathMatch: 'full'
+    component: HomeComponent
+
   },
   {
     path: 'home',

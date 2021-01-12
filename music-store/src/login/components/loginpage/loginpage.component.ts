@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
     }
 
   }
-  public socialSignIn(socialProvider: string) {
+  /*public socialSignIn(socialProvider: string) {
     let socialPlatformProvider;
     this.loginFlag = true;
     if (socialProvider == 'google') {
@@ -81,7 +81,19 @@ export class LoginComponent implements OnInit {
       }
     })
 
+  }*/
+  loginGoogle() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("googleToken");
+
+    localStorage.setItem("googleLogin","true");
+    alert('localStorage.setItem("googleLogin","true")');
+
+     location.href = 'https://musicstoresss.herokuapp.com/user/google';
+
+
   }
+
 }
 
 

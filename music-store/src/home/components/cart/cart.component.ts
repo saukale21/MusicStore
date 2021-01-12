@@ -190,6 +190,7 @@ export class CartComponent implements OnInit {
       contactFormModalMessage: new FormControl('', Validators.required),
       contactFormModalRating: new FormControl('', Validators.required)
     });
+    this.reviewservice.getToken()
   }
 
   get contactFormModalMessage() {
@@ -202,13 +203,32 @@ export class CartComponent implements OnInit {
   onSubmit() {
     console.log(this.contactFormModalMessage.value);
     console.log(this.contactFormModalRating.value);
-    var obj = {
-      "rating": this.contactFormModalRating.value,
-      "description": this.contactFormModalMessage.value
-    };
-    this.reviewservice.postUserReview(obj).subscribe(res=>{
-      console.log(res);
-    });
+    var obj;
+    let localItem = localStorage.getItem('googleLogin');
+      if(localItem == "true"){
+        obj = {
+          "rating": this.contactFormModalRating.value,
+          "description": this.contactFormModalMessage.value,
+          token:localStorage.getItem('googleToken'),
+
+        };
+        alert("Cart google");
+
+
+      }else {
+        obj = {
+          "rating": this.contactFormModalRating.value,
+          "description": this.contactFormModalMessage.value
+        };
+        alert("Cart normal");
+
+      }
+      this.reviewservice.postUserReview(obj).subscribe(res=>{
+        console.log(res);
+      });
+      
+
+
 
   }
 
