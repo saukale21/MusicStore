@@ -92,7 +92,7 @@ small
 ::ng-deep .ngxImageZoomContainer > img
 {
     max-width: 400px !important;
-    height: 615px !important; 
+    height: 500px !important; 
     border-radius: 5px !important;
 }
 
