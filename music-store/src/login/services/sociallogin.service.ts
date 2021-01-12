@@ -20,8 +20,6 @@ export class SocialloginService {
   constructor(private http: HttpClient,private loginservice: LoginService,private router : Router) { }
     Saveresponse(res){
       //console.log(res);
-      //this.url = '/user/google';
-      //return this.http.post<any>(this.url,res,{headers: this.headers});
     }
          
    

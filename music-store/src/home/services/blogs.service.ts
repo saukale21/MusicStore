@@ -17,28 +17,21 @@ export class BlogsService {
 //added dummy data
     this.blogsList=new Array<any>();
   }
-  //localItem = localStorage.getItem('googleLogin');
-  //if(localItem == "true")
 
   
     getToken(){
       let localItem;
       localItem = localStorage.getItem('googleLogin');
       if(localItem == "true"){
-        alert("google");
         this.token = localStorage.getItem('googleToken');
-        console.log("Checktoken",this.token);
         this.headers = new HttpHeaders({
           'Content-Type': 'application/json',
-          //'Authorization': `Bearer ${this.token}`
       });
 
 
       }
       else{
-        alert("normal");
         this.token = localStorage.getItem('token');
-        console.log("Checktoken",this.token);
         this.headers = new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${this.token}`

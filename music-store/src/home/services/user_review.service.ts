@@ -10,29 +10,19 @@ export class UserReviewService {
  
     
     constructor(private http: HttpClient) { }
-    /*token = localStorage.getItem('token');
-    headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
-    });*/
     getToken(){
         let localItem;
         localItem = localStorage.getItem('googleLogin');
         if(localItem == "true"){
-          alert("google");
           this.token = localStorage.getItem('googleToken');
-          console.log("Checktoken",this.token);
           this.headers = new HttpHeaders({
             'Content-Type': 'application/json',
-            //'Authorization': `Bearer ${this.token}`
         });
   
   
         }
         else{
-          alert("normal");
           this.token = localStorage.getItem('token');
-          console.log("Checktoken",this.token);
           this.headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${this.token}`
