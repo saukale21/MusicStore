@@ -179,10 +179,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
   clearFilter() {
     this.li = this.list;
-    for (let i in this.filters) {
-      this.filters[i].checked = false;
-    }
-    this.priceRange = 0;
   }
   ngAfterViewChecked(): void {
     if (this.products != undefined) {
