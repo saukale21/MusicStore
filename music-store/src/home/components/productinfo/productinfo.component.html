@@ -1,17 +1,21 @@
 <div class="background">
     <div class="productdetails">
         <div class="xzoom-container">
-                 <img [src]='imageurl+"/"+res.image_paths' alt="img" height="500px" width="400px">
-                <!-- <lib-ngx-image-zoom id="zoomimg"
-                [thumbImage]= "Imagepath"
-                [fullImage]= "Imagepath"
+                 <!-- <img [src]='imageurl+"/"+res.image_paths' alt="img" height="500px" width="400px"> -->
+                <!-- <img [src]="imageurl" alt="img" *ngIf="imageurl" height="500px" width="400px"> -->
+                 <lib-ngx-image-zoom id="zoomimg"  
+                 [thumbImage]= 'imageurl+"/"+res.image_paths'
+                [fullImage]= 'imageurl+"/"+res.image_paths'
+                enableZoom="enableZoom"
                 zoomMode= 'hover'
-                magnification = 4
+                magnification = 2
                 enableLens = true
                 lensWidth= 200
                 lensHeight= 200
                 circularLens = true
-                ></lib-ngx-image-zoom> -->
+                ></lib-ngx-image-zoom>
+
+                
         </div>
 
         <div class="description">
