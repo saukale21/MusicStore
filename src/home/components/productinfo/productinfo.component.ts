@@ -30,7 +30,7 @@ export class ProductInfoComponent implements OnInit {
   // Add to cart
   //addtoCart(pr: Product) {
   addtoCart(pr) {
-    if (this.loginservice.login == false) {
+    if (this.loginservice.login == false && localStorage.getItem('login') != "true") {
       this.loginservice.setURL(this.router.url);
       this.router.navigate(['/login']);
     }
