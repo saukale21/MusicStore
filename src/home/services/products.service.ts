@@ -9,11 +9,7 @@ export class ProductsService {
   url = environment.URL;
 
   constructor(private http: HttpClient) { }
-  token = localStorage.getItem('token');
-  headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${this.token}`
-  });
+  
 
   getProducts(): Observable<any> {
     return this.http.get(`${this.url}/product`);
@@ -31,7 +27,20 @@ export class ProductsService {
     return this.http.get(`${this.url}/product/?beginner=true`);
   }
   saveOrder(body):Observable<any> {
-    console.log(this.token);
-    return this.http.post(`${this.url}/order`,body,{headers: this.headers});
+    var token = localStorage.getItem('token');
+    let localItem = localStorage.getItem('googleLogin');
+      if(localItem == "true"){
+        var headers = new HttpHeaders({
+          'Content-Type': 'application/json'
+        });
+      }
+      else {
+        var headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        });
+      }
+    
+    return this.http.post(`${this.url}/order`,body,{headers: headers});
   }
 }

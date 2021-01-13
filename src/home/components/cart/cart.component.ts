@@ -168,8 +168,21 @@ export class CartComponent implements OnInit {
     }
     body.product_details = arr;
     body.total_price = this.totalPrice();
-    let data = JSON.stringify(body);
-    console.log(body);
+    
+    var data;
+    var obj;
+    let localItem = localStorage.getItem('googleLogin');
+      if(localItem == "true"){
+        obj = body;
+        obj.token = localStorage.getItem('googleToken'),
+        alert("Cart google");
+        data = JSON.stringify(obj);
+      }
+      else {
+        data = JSON.stringify(body);
+      }
+      console.log(body);
+    
     this.productservice.saveOrder(data).subscribe(res=>{
       console.log(res);
       alert('Order Placed Successfully! Shop More!');
