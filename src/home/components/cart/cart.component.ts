@@ -175,7 +175,6 @@ export class CartComponent implements OnInit {
       if(localItem == "true"){
         obj = body;
         obj.token = localStorage.getItem('googleToken'),
-        alert("Cart google");
         data = JSON.stringify(obj);
       }
       else {
@@ -223,9 +222,7 @@ export class CartComponent implements OnInit {
           "rating": this.contactFormModalRating.value,
           "description": this.contactFormModalMessage.value,
           token:localStorage.getItem('googleToken'),
-
         };
-        alert("Cart google");
 
 
       }else {
@@ -233,7 +230,6 @@ export class CartComponent implements OnInit {
           "rating": this.contactFormModalRating.value,
           "description": this.contactFormModalMessage.value
         };
-        alert("Cart normal");
 
       }
       this.reviewservice.postUserReview(obj).subscribe(res=>{
